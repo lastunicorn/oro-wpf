@@ -5,7 +5,7 @@
 		<TargetFramework>net10.0-windows</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
-		<AssemblyName>DustInTheWind.$(MSBuildProjectName)</AssemblyName>
+		<AssemblyName>Oro</AssemblyName>
 		<RootNamespace>DustInTheWind.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<ApplicationIcon>app.ico</ApplicationIcon>
 		<Version>1.0.0</Version>

@@ -48,9 +48,6 @@ public partial class App : Application
              .FirstOrDefault(x => x == typeof(DefaultTemplate));
 
             applicationState.ClockTemplate = (ClockTemplate)Activator.CreateInstance(selectedTemplateType);
-
-            if (applicationState.ClockTemplate is DefaultTemplate defaultTemplate)
-                defaultTemplate.Style = DefaultTemplate.TemplateStyle.Black;
         }
 
         return applicationState;
