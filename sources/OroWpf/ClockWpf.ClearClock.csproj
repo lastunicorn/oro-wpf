@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>DustInTheWind.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>DustInTheWind.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<ApplicationIcon>app.ico</ApplicationIcon>
+		<Version>1.0.0</Version>
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<FileVersion>1.0.0</FileVersion>
+		<Company>Dust in the Wind</Company>
+		<Copyright>Copyright © Dust in the Wind 2010-2025</Copyright>
+		<Product>Clear Clock</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ClockWpf\ClockWpf.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
+	</ItemGroup>
+
+</Project>

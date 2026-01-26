@@ -1,0 +1,22 @@
+﻿<Application
+    x:Class="DustInTheWind.ClockWpf.ClearClock.App"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DustInTheWind.ClockWpf.ClearClock">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <local:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
+            <local:HalfSizeConverter x:Key="HalfSizeConverter"/>
+            <local:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/CornerButtonStyles.xaml"/>
+                <ResourceDictionary Source="Styles/ThumbStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
