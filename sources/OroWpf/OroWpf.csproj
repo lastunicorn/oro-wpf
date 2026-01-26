@@ -17,15 +17,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ClockWpf\ClockWpf.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Content Include="app.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
+		<PackageReference Include="DustInTheWind.ClockWpf" Version="1.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
 	</ItemGroup>
 
 </Project>
