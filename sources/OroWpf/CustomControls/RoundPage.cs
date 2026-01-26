@@ -25,6 +25,22 @@ public class RoundPage : UserControl
 
     #endregion
 
+    #region Subtitle Dependency Property
+
+    public static readonly DependencyProperty SubtitleProperty = DependencyProperty.Register(
+        nameof(Subtitle),
+        typeof(string),
+        typeof(RoundPage),
+        new PropertyMetadata(string.Empty));
+
+    public string Subtitle
+    {
+        get => (string)GetValue(SubtitleProperty);
+        set => SetValue(SubtitleProperty, value);
+    }
+
+    #endregion
+
     #region CloseCommand Dependency Property
 
     public static readonly DependencyProperty CloseCommandProperty = DependencyProperty.Register(

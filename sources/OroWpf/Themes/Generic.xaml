@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.CustomControls"
     xmlns:local="clr-namespace:DustInTheWind.OroWpf">
-    
+
     <local:HalfSizeConverter x:Key="HalfSizeConverter"/>
     <local:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
 
@@ -54,11 +54,24 @@
                                 BorderThickness="0 0 0 1"
                                 BorderBrush="LightGray">
 
-                                <TextBlock
-                                    Text="{TemplateBinding Title}"
-                                    FontSize="22"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
+                                <StackPanel
+                                    Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                    <TextBlock
+                                        Text="{TemplateBinding Title}"
+                                        FontSize="22"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+
+                                    <TextBlock
+                                        Text="{TemplateBinding Subtitle}"
+                                        FontSize="14"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+
+                                </StackPanel>
 
                             </Border>
 

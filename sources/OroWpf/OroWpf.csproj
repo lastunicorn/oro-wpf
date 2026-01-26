@@ -13,11 +13,24 @@
 		<FileVersion>1.0.0</FileVersion>
 		<Company>Dust in the Wind</Company>
 		<Copyright>Copyright © Dust in the Wind 2010-2025</Copyright>
-		<Product>Clear Clock</Product>
+		<Product>Oro</Product>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Content Include="app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
