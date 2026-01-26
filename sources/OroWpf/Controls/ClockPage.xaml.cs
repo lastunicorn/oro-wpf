@@ -1,7 +1,8 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using DustInTheWind.OroWpf.Controls;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+namespace DustInTheWind.OroWpf.Controls;
 
 /// <summary>
 /// Interaction logic for ClockPage.xaml

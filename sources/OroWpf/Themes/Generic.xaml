@@ -1,8 +1,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:customControls="clr-namespace:DustInTheWind.ClockWpf.ClearClock.CustomControls"
-    xmlns:local="clr-namespace:DustInTheWind.ClockWpf.ClearClock">
+    xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.CustomControls"
+    xmlns:local="clr-namespace:DustInTheWind.OroWpf">
     
     <local:HalfSizeConverter x:Key="HalfSizeConverter"/>
     <local:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>

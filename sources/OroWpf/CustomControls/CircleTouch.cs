@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace DustInTheWind.ClockWpf.ClearClock.CustomControls;
+namespace DustInTheWind.OroWpf.CustomControls;
 
 internal record struct CircleTouch
 {

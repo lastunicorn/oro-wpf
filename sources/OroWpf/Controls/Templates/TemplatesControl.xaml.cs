@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using DustInTheWind.ClockWpf.TimeProviders;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls.Templates;
+namespace DustInTheWind.OroWpf.Controls.Templates;
 
 /// <summary>
 /// Interaction logic for SettingsControl.xaml

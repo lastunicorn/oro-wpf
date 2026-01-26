@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using DustInTheWind.ClockWpf.ClearClock.Controls;
+using DustInTheWind.OroWpf.Controls;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

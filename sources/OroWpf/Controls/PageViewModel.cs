@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+﻿namespace DustInTheWind.OroWpf.Controls;
 
 public class PageViewModel : ViewModelBase
 {

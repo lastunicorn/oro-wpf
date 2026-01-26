@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+namespace DustInTheWind.OroWpf.Controls;
 
 public class ViewModelBase : INotifyPropertyChanged
 {

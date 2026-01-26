@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 public class SettingsCommand : ICommand
 {

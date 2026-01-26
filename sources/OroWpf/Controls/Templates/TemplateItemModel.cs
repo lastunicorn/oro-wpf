@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.ClockWpf.ClearClock.Controls.Templates;
+﻿namespace DustInTheWind.OroWpf.Controls.Templates;
 
 public class TemplateItemModel
 {

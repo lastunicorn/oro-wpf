@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 public class HalfSizeToPointConverter : IValueConverter
 {

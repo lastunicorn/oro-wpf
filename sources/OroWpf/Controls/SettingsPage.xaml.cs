@@ -1,6 +1,6 @@
-﻿using DustInTheWind.ClockWpf.ClearClock.CustomControls;
+﻿using DustInTheWind.OroWpf.CustomControls;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+namespace DustInTheWind.OroWpf.Controls;
 
 /// <summary>
 /// Interaction logic for SettingsPage.xaml

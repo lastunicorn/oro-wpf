@@ -1,6 +1,6 @@
 ﻿using DustInTheWind.ClockWpf.Templates;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 public class ApplicationState
 {

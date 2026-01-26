@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 public class QuarterSizeConverter : IValueConverter
 {

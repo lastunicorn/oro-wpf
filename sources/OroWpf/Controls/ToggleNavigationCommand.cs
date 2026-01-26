@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+namespace DustInTheWind.OroWpf.Controls;
 
 public class ToggleNavigationCommand : ICommand
 {

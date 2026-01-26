@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.ClockWpf.ClearClock.CustomControls;
+﻿namespace DustInTheWind.OroWpf.CustomControls;
 
 public enum CornerType
 {

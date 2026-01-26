@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace DustInTheWind.ClockWpf.ClearClock.CustomControls;
+namespace DustInTheWind.OroWpf.CustomControls;
 
 internal class CornerShape
 {

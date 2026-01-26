@@ -1,7 +1,8 @@
 ﻿using System.Windows.Controls;
-using DustInTheWind.ClockWpf.ClearClock.Controls;
+using DustInTheWind.OroWpf.Controls;
+using DustInTheWind.OroWpf.Controls;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 public class MainViewModel : ViewModelBase
 {

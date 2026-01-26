@@ -1,7 +1,7 @@
-﻿using DustInTheWind.ClockWpf.ClearClock.Controls.About;
-using DustInTheWind.ClockWpf.ClearClock.Controls.Templates;
+﻿using DustInTheWind.OroWpf.Controls.About;
+using DustInTheWind.OroWpf.Controls.Templates;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls;
+namespace DustInTheWind.OroWpf.Controls;
 
 public class SettingsPageModel : PageViewModel
 {

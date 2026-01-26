@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace DustInTheWind.ClockWpf.ClearClock.CustomControls;
+namespace DustInTheWind.OroWpf.CustomControls;
 
 /// <summary>
 /// Interaction logic for RoundPage.xaml

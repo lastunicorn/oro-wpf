@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using DustInTheWind.ClockWpf.Templates;
+using DustInTheWind.OroWpf;
+using DustInTheWind.OroWpf.Controls;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls.Templates;
+namespace DustInTheWind.OroWpf.Controls.Templates;
 
 public class TemplatesViewModel : ViewModelBase
 {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace DustInTheWind.ClockWpf.ClearClock.Controls.About;
+namespace DustInTheWind.OroWpf.Controls.About;
 
 /// <summary>
 /// Interaction logic for AboutControl.xaml

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace DustInTheWind.ClockWpf.ClearClock.CustomControls;
+namespace DustInTheWind.OroWpf.CustomControls;
 
 public class CornerButton : Button
 {

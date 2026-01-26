@@ -1,9 +1,10 @@
 ﻿using System.Windows;
-using DustInTheWind.ClockWpf.ClearClock.Controls;
+using DustInTheWind.OroWpf.Controls;
 using DustInTheWind.ClockWpf.Templates;
+using DustInTheWind.OroWpf;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DustInTheWind.ClockWpf.ClearClock;
+namespace DustInTheWind.OroWpf;
 
 /// <summary>
 /// Interaction logic for App.xaml
