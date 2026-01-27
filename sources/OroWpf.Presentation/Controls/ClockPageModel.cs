@@ -48,6 +48,7 @@ public class ClockPageModel : PageViewModel
 
         TimeProvider = new LocalTimeProvider();
         TimeProvider.Start();
+
         this.applicationState = applicationState;
     }
 
