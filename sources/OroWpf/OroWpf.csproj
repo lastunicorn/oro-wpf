@@ -8,12 +8,6 @@
 		<AssemblyName>Oro</AssemblyName>
 		<RootNamespace>DustInTheWind.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<ApplicationIcon>app.ico</ApplicationIcon>
-		<Version>1.0.0</Version>
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<FileVersion>1.0.0</FileVersion>
-		<Company>Dust in the Wind</Company>
-		<Copyright>Copyright © Dust in the Wind 2010-2025</Copyright>
-		<Product>Oro</Product>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
