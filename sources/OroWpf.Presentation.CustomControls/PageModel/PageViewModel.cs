@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls;
+namespace DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 
-public class PageViewModel
+public class PageViewModel : INotifyPropertyChanged
 {
     protected bool IsInitializing { get; private set; }
 

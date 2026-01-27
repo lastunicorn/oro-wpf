@@ -12,7 +12,7 @@
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation;component/Styles/ThumbStyles.xaml"/>
+                <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/Themes/ThumbStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

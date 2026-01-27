@@ -2,6 +2,7 @@
 using DustInTheWind.OroWpf.Presentation.Controls.About;
 using DustInTheWind.OroWpf.Presentation.Controls.Settings;
 using DustInTheWind.OroWpf.Presentation.Controls.Templates;
+using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 
