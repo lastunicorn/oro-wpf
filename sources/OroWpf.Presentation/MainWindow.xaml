@@ -8,7 +8,7 @@
     xmlns:clockWpf="clr-namespace:DustInTheWind.ClockWpf;assembly=DustInTheWind.ClockWpf"
     xmlns:local="clr-namespace:DustInTheWind.OroWpf.Presentation"
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
-    xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls"
+    xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
     
     mc:Ignorable="d"
     SizeToContent="WidthAndHeight"

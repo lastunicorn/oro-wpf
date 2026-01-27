@@ -1,4 +1,4 @@
-﻿<customControls:RoundPage
+﻿<pageModel:RoundPage
     x:Class="DustInTheWind.OroWpf.Presentation.Controls.SettingsPage"
     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,7 +9,7 @@
     xmlns:templates="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Templates"
     xmlns:about="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.About"
     xmlns:settings="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Settings"
-    xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls"
+    xmlns:pageModel="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
     
     mc:Ignorable="d"
     d:DesignHeight="400"
@@ -81,4 +81,4 @@
 
     </Border>
 
-</customControls:RoundPage>
+</pageModel:RoundPage>

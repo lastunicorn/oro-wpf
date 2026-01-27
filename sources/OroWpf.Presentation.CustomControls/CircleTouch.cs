@@ -2,7 +2,7 @@
 
 namespace DustInTheWind.OroWpf.Presentation.CustomControls;
 
-internal record struct CircleTouch
+internal readonly record struct CircleTouch
 {
     public double X { get; }
 

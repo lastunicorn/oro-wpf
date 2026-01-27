@@ -1,4 +1,4 @@
-﻿using DustInTheWind.OroWpf.Presentation.CustomControls;
+﻿using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 

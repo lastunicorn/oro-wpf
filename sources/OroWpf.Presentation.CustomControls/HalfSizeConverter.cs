@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace DustInTheWind.OroWpf.Presentation;
+namespace DustInTheWind.OroWpf.Presentation.CustomControls;
 
 public class HalfSizeConverter : IValueConverter
 {

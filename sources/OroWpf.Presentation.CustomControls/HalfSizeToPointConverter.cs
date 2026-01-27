@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace DustInTheWind.OroWpf.Presentation;
+namespace DustInTheWind.OroWpf.Presentation.CustomControls;
 
 public class HalfSizeToPointConverter : IValueConverter
 {
