@@ -1,11 +1,5 @@
 ﻿using System.Windows;
-using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation;
-using DustInTheWind.OroWpf.Presentation.Controls;
-using DustInTheWind.OroWpf.Presentation.Controls.About;
-using DustInTheWind.OroWpf.Presentation.Controls.Settings;
-using DustInTheWind.OroWpf.Presentation.Controls.Templates;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;
@@ -17,85 +11,26 @@ public partial class App : Application
 {
     protected override void OnStartup(StartupEventArgs e)
     {
-        ServiceCollection serviceCollection = new();
-
-        serviceCollection.AddSingleton<ISettings, Settings>();
-
-        ApplicationState applicationState = CreateApplicationState();
-        serviceCollection.AddSingleton(applicationState);
-
-        PageEngine pageEngine = CreatePageEngine();
-        serviceCollection.AddSingleton(pageEngine);
-        serviceCollection.AddSingleton<IPageFactory, PageFactory>();
-
-        serviceCollection.AddTransient<MainWindow>();
-        serviceCollection.AddTransient<MainViewModel>();
-
-        serviceCollection.AddTransient<ClockPage>();
-        serviceCollection.AddTransient<ClockPageModel>();
-
-        serviceCollection.AddTransient<SettingsPage>();
-        serviceCollection.AddTransient<SettingsPageModel>();
-
-        serviceCollection.AddTransient<TemplatesViewModel>();
-        serviceCollection.AddTransient<SettingsViewModel>();
-        serviceCollection.AddTransient<AboutViewModel>();
-        serviceCollection.AddTransient<SettingsCloseCommand>();
-
-        IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
-
-        MainWindow mainWindow = serviceProvider.GetService<MainWindow>();
-        mainWindow.DataContext = serviceProvider.GetService<MainViewModel>();
-        mainWindow.Show();
-
-        MainWindow = mainWindow;
+        IServiceProvider serviceProvider = ConfigureServices();
+        MainWindow = CreateAndShoeMainWindow(serviceProvider);
 
         base.OnStartup(e);
     }
 
-    private static ApplicationState CreateApplicationState()
+    private static IServiceProvider ConfigureServices()
     {
-        ApplicationState applicationState = new();
-
-        List<Type> templateTypes = EnumerateClockTemplates().ToList();
-        applicationState.AvailableTemplateTypes = templateTypes;
-
-        if (templateTypes?.Count > 0)
-        {
-            Type selectedTemplateType = templateTypes
-             .FirstOrDefault(x => x == typeof(DefaultTemplate));
-
-            applicationState.ClockTemplate = (ClockTemplate)Activator.CreateInstance(selectedTemplateType);
-        }
-
-        return applicationState;
+        ServiceCollection serviceCollection = new();
+        Setup.ConfigureServices(serviceCollection);
+        return serviceCollection.BuildServiceProvider();
     }
 
-    private static IEnumerable<Type> EnumerateClockTemplates()
+    private static MainWindow CreateAndShoeMainWindow(IServiceProvider serviceProvider)
     {
-        return typeof(ClockTemplate).Assembly.GetTypes()
-            .Where(x => x.IsClass && !x.IsAbstract && x.IsSubclassOf(typeof(ClockTemplate)));
-    }
+        MainWindow mainWindow = serviceProvider.GetService<MainWindow>();
+        mainWindow.DataContext = serviceProvider.GetService<MainViewModel>();
 
-    private static PageEngine CreatePageEngine()
-    {
-        PageEngine pageEngine = new();
+        mainWindow.Show();
 
-        pageEngine.Pages.Add(new Page
-        {
-            Id = "clock",
-            ViewType = typeof(ClockPage)
-        });
-
-        pageEngine.Pages.Add(new Page
-        {
-            Id = "settings",
-            ViewType = typeof(SettingsPage)
-        });
-
-        pageEngine.SelectPage("clock");
-
-        return pageEngine;
+        return mainWindow;
     }
 }
-
