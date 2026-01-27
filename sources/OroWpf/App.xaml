@@ -3,18 +3,18 @@
     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:DustInTheWind.OroWpf">
+    xmlns:presentation="clr-namespace:DustInTheWind.OroWpf.Presentation;assembly=DustInTheWind.OroWpf.Presentation">
 
     <Application.Resources>
         <ResourceDictionary>
-            <local:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
-            <local:HalfSizeConverter x:Key="HalfSizeConverter"/>
-            <local:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
+            <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
+            <presentation:HalfSizeConverter x:Key="HalfSizeConverter"/>
+            <presentation:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/CornerButtonStyles.xaml"/>
-                <ResourceDictionary Source="Styles/ThumbStyles.xaml"/>
+                <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation;component/Styles/CornerButtonStyles.xaml"/>
+                <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation;component/Styles/ThumbStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

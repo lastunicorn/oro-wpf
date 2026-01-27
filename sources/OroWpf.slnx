@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="OroWpf.Ports.SettingsAccess/OroWpf.Ports.SettingsAccess.csproj" Id="1acfead1-9f41-492d-b166-e90f6c5b25d2" />
+  <Project Path="OroWpf.Presentation/OroWpf.Presentation.csproj" Id="5971f10d-be6e-453c-8a05-6d1a89d18875" />
   <Project Path="OroWpf/OroWpf.csproj" />
 </Solution>

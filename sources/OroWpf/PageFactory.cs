@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using DustInTheWind.OroWpf.Controls;
+using DustInTheWind.OroWpf.Presentation;
+using DustInTheWind.OroWpf.Presentation.Controls;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;

@@ -1,0 +1,50 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls">
+
+    <Style TargetType="controls:CornerButton">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Background" Value="#909090" />
+        <Setter Property="HoverBackground" Value="#909090" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:CornerButton">
+                    <Viewbox
+                        x:Name="PART_Container"
+                        Opacity="0.5">
+
+                        <Grid
+                            Width="100"
+                            Height="100">
+
+                            <Path
+                                x:Name="PART_BackgroundPath"
+							    Data="{TemplateBinding Geometry}"
+                                Fill="{TemplateBinding Background}"
+                                Stretch="Fill"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"/>
+
+                            <ContentPresenter
+							    HorizontalAlignment="{TemplateBinding ContentHorizontalAlignment}"
+							    VerticalAlignment="{TemplateBinding ContentVerticalAlignment}"
+							    Margin="{TemplateBinding Padding}"/>
+
+                        </Grid>
+                    </Viewbox>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Container" Property="Opacity" Value="1"/>
+                            <Setter TargetName="PART_BackgroundPath" Property="Fill" Value="{Binding HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

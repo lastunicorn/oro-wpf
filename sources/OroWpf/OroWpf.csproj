@@ -40,12 +40,13 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\OroWpf.Ports.SettingsAccess\OroWpf.Ports.SettingsAccess.csproj" />
+		<ProjectReference Include="..\OroWpf.Presentation\OroWpf.Presentation.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 </Project>

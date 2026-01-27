@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>DustInTheWind.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<AssemblyName>DustInTheWind.$(MSBuildProjectName)</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DustInTheWind.ClockWpf" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\OroWpf.Ports.SettingsAccess\OroWpf.Ports.SettingsAccess.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Controls\About\AboutControl.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\ClockPage.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\DemoPage.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\SettingsPage.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\Settings\SettingsControl.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\Templates\TemplatesControl.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="CustomControls\RoundPage.cs">
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
+</Project>

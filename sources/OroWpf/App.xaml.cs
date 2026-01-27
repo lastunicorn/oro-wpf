@@ -1,10 +1,11 @@
 ﻿using System.Windows;
 using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.OroWpf.Controls;
-using DustInTheWind.OroWpf.Controls.About;
-using DustInTheWind.OroWpf.Controls.Settings;
-using DustInTheWind.OroWpf.Controls.Templates;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
+using DustInTheWind.OroWpf.Presentation;
+using DustInTheWind.OroWpf.Presentation.Controls;
+using DustInTheWind.OroWpf.Presentation.Controls.About;
+using DustInTheWind.OroWpf.Presentation.Controls.Settings;
+using DustInTheWind.OroWpf.Presentation.Controls.Templates;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;
