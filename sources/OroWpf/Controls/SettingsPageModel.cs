@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using DustInTheWind.OroWpf.Controls.About;
+using DustInTheWind.OroWpf.Controls.Settings;
 using DustInTheWind.OroWpf.Controls.Templates;
 
 namespace DustInTheWind.OroWpf.Controls;
@@ -14,15 +15,20 @@ public class SettingsPageModel : PageViewModel
 
     public AboutViewModel AboutViewModel { get; }
 
+    public SettingsViewModel SettingsViewModel { get; }
+
     public SettingsCloseCommand SettingsCloseCommand { get; }
 
-    public SettingsPageModel(ApplicationState applicationState, PageEngine pageEngine)
+    public SettingsPageModel(
+        TemplatesViewModel templatesViewModel,
+        SettingsViewModel settingsViewModel,
+        AboutViewModel aboutViewModel,
+        SettingsCloseCommand settingsCloseCommand)
     {
-        ArgumentNullException.ThrowIfNull(applicationState);
-
-        TemplatesViewModel = new TemplatesViewModel(applicationState);
-        AboutViewModel = new AboutViewModel();
-        SettingsCloseCommand = new SettingsCloseCommand(pageEngine);
+        TemplatesViewModel = templatesViewModel;
+        AboutViewModel = aboutViewModel;
+        SettingsViewModel = settingsViewModel;
+        SettingsCloseCommand = settingsCloseCommand;
 
         Assembly assembly = Assembly.GetEntryAssembly();
         Title = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;

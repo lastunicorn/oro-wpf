@@ -8,6 +8,7 @@
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Controls"
     xmlns:templates="clr-namespace:DustInTheWind.OroWpf.Controls.Templates"
     xmlns:about="clr-namespace:DustInTheWind.OroWpf.Controls.About"
+    xmlns:settings="clr-namespace:DustInTheWind.OroWpf.Controls.Settings"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.CustomControls"
     
     mc:Ignorable="d"
@@ -53,7 +54,6 @@
 
             <TabItem
                 Header="Templates"
-                Background="WhiteSmoke"
                 BorderThickness="0">
 
                 <templates:TemplatesControl
@@ -62,8 +62,15 @@
             </TabItem>
 
             <TabItem
-                Header="About"
-                Background="WhiteSmoke">
+                Header="Settings">
+
+                <settings:SettingsControl
+                    DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
+
+            </TabItem>
+
+            <TabItem
+                Header="About">
 
                 <about:AboutControl
                     DataContext="{Binding AboutViewModel, Mode=OneWay}"/>

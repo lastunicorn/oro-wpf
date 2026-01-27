@@ -1,13 +1,14 @@
 ﻿using System.Windows.Controls;
 using DustInTheWind.OroWpf.Controls;
-using DustInTheWind.OroWpf.Controls;
+using DustInTheWind.OroWpf.Ports.SettingsAccess;
 
 namespace DustInTheWind.OroWpf;
 
 public class MainViewModel : ViewModelBase
 {
-    private readonly ApplicationState applicationState;
-    private PageEngine pageEngine;
+    private readonly PageEngine pageEngine;
+    private readonly ISettings settings;
+    private readonly IPageFactory pageFactory;
 
     public Control CurrentPage
     {
@@ -36,22 +37,48 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+    public bool KeepOnTop
+    {
+        get => field;
+        set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+
+            if (!IsInitializing)
+                settings.KeepOnTop = value;
+        }
+    }
+
     public SettingsCommand SettingsCommand { get; }
 
-    public MainViewModel(ApplicationState applicationState, PageEngine pageEngine)
+    public MainViewModel(PageEngine pageEngine, ISettings settings, IPageFactory pageFactory)
     {
-        ArgumentNullException.ThrowIfNull(applicationState);
-        ArgumentNullException.ThrowIfNull(pageEngine);
-
+        this.pageEngine = pageEngine ?? throw new ArgumentNullException(nameof(pageEngine));
+        this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
+        this.pageFactory = pageFactory ?? throw new ArgumentNullException(nameof(pageFactory));
         SettingsCommand = new SettingsCommand(pageEngine);
-
-        this.applicationState = applicationState;
-        this.pageEngine = pageEngine;
 
         pageEngine.CurrentPageChanged += HandlePageChanged;
         pageEngine.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
 
         DisplayCurrentPage();
+
+        Initialize(() =>
+        {
+            IsNavigationVisible = pageEngine.IsNavigationVisible;
+            KeepOnTop = settings.KeepOnTop;
+        });
+
+        settings.KeepOnTopChanged += HandleKeepOnTopChanged;
+    }
+
+    private void HandleKeepOnTopChanged(object sender, EventArgs e)
+    {
+        KeepOnTop = settings.KeepOnTop;
     }
 
     private void HandlePageChanged(object sender, EventArgs e)
@@ -75,11 +102,7 @@ public class MainViewModel : ViewModelBase
     {
         if (pageEngine.CurrentPage?.ViewType == typeof(SettingsPage))
         {
-            SettingsPage settingsPage = new()
-            {
-                DataContext = new SettingsPageModel(applicationState, pageEngine)
-            };
-            CurrentPage = settingsPage;
+            CurrentPage = pageFactory.CreatePage<SettingsPage, SettingsPageModel>();
         }
         else if (pageEngine.CurrentPage?.ViewType == typeof(ClockPage))
         {
@@ -95,14 +118,7 @@ public class MainViewModel : ViewModelBase
 
     private ClockPage GetOrCreateClockPage()
     {
-        if (clockPage == null)
-        {
-            clockPage = new ClockPage()
-            {
-                DataContext = new ClockPageModel(applicationState, pageEngine)
-            };
-        }
-
+        clockPage ??= pageFactory.CreatePage<ClockPage, ClockPageModel>();
         return clockPage;
     }
 

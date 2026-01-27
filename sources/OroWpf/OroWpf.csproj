@@ -38,4 +38,14 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\OroWpf.Ports.SettingsAccess\OroWpf.Ports.SettingsAccess.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

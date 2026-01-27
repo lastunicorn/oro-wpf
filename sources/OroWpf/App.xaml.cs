@@ -1,7 +1,10 @@
 ﻿using System.Windows;
-using DustInTheWind.OroWpf.Controls;
 using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.OroWpf;
+using DustInTheWind.OroWpf.Controls;
+using DustInTheWind.OroWpf.Controls.About;
+using DustInTheWind.OroWpf.Controls.Settings;
+using DustInTheWind.OroWpf.Controls.Templates;
+using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;
@@ -15,14 +18,28 @@ public partial class App : Application
     {
         ServiceCollection serviceCollection = new();
 
+        serviceCollection.AddSingleton<ISettings, Settings>();
+
         ApplicationState applicationState = CreateApplicationState();
         serviceCollection.AddSingleton(applicationState);
 
         PageEngine pageEngine = CreatePageEngine();
         serviceCollection.AddSingleton(pageEngine);
+        serviceCollection.AddSingleton<IPageFactory, PageFactory>();
 
         serviceCollection.AddTransient<MainWindow>();
         serviceCollection.AddTransient<MainViewModel>();
+
+        serviceCollection.AddTransient<ClockPage>();
+        serviceCollection.AddTransient<ClockPageModel>();
+
+        serviceCollection.AddTransient<SettingsPage>();
+        serviceCollection.AddTransient<SettingsPageModel>();
+
+        serviceCollection.AddTransient<TemplatesViewModel>();
+        serviceCollection.AddTransient<SettingsViewModel>();
+        serviceCollection.AddTransient<AboutViewModel>();
+        serviceCollection.AddTransient<SettingsCloseCommand>();
 
         IServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 

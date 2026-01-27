@@ -17,7 +17,8 @@
     Background="Transparent"
     ResizeMode="CanResize"
     d:DataContext="{d:DesignInstance local:MainViewModel}"
-    WindowStartupLocation="CenterScreen">
+    WindowStartupLocation="CenterScreen"
+    Topmost="{Binding KeepOnTop}">
 
     <Grid
         x:Name="MainContainer"
