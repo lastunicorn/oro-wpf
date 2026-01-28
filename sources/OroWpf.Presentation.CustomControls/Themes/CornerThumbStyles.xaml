@@ -1,16 +1,19 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls">
 
-    <Style x:Key="ThumbStyle" TargetType="Thumb">
+    <Style TargetType="{x:Type customControls:CornerThumb}">
         <Setter Property="Cursor" Value="SizeNWSE" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="Padding" Value="10" />
+        <Setter Property="Foreground" Value="WhiteSmoke" />
+        <Setter Property="Background" Value="#909090" />
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Thumb">
+                <ControlTemplate TargetType="{x:Type customControls:CornerThumb}">
                     <Viewbox
                         x:Name="PART_Container"
                         Opacity="0.5">
@@ -22,10 +25,8 @@
                             <!-- Background -->
                             <Path
                                 x:Name="PART_BackgroundPath"
-							    Data="M 0,1 A 2,2 0 0 0 1,0 L 1,1 Z"
-							    Fill="#909090"
-							    Stroke="#909090"
-							    StrokeThickness="10"
+							    Data="{TemplateBinding Geometry}"
+							    Fill="{TemplateBinding Background}"
 							    StrokeLineJoin="Round"
 							    Stretch="Fill"
 							    HorizontalAlignment="Stretch"
@@ -34,7 +35,7 @@
                             <!-- Three Lines -->
                             <Path
 							    Data="M 0,20 L 20,0 M 8,20 L 20,8 M 16,20 L 20,16"
-							    Stroke="WhiteSmoke"
+							    Stroke="{TemplateBinding Foreground}"
 							    StrokeThickness="2"
 							    StrokeStartLineCap="Round"
 							    StrokeEndLineCap="Round"

@@ -28,8 +28,8 @@
                                 VerticalAlignment="Stretch"/>
 
                             <ContentPresenter
-							    HorizontalAlignment="{TemplateBinding ContentHorizontalAlignment}"
-							    VerticalAlignment="{TemplateBinding ContentVerticalAlignment}"
+							    HorizontalAlignment="{Binding ContentHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+							    VerticalAlignment="{Binding ContentVerticalAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
 							    Margin="{TemplateBinding Padding}"/>
 
                         </Grid>

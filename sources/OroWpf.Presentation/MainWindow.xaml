@@ -9,6 +9,7 @@
     xmlns:local="clr-namespace:DustInTheWind.OroWpf.Presentation"
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
+    xmlns:presentation="clr-namespace:DustInTheWind.OroWpf.Presentation"
     
     mc:Ignorable="d"
     SizeToContent="WidthAndHeight"
@@ -19,6 +20,10 @@
     d:DataContext="{d:DesignInstance local:MainViewModel}"
     WindowStartupLocation="CenterScreen"
     Topmost="{Binding KeepOnTop}">
+
+    <Window.Resources>
+        <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
+    </Window.Resources>
 
     <Grid
         x:Name="MainContainer"
@@ -71,13 +76,13 @@
 
         </customControls:CornerButton>
 
-        <Thumb
+        <customControls:CornerThumb
             x:Name="ResizeGrip"
             Width="{Binding ActualWidth, ElementName=MainContainer, Converter={StaticResource QuarterSizeConverter}}"
             Height="{Binding ActualHeight, ElementName=MainContainer, Converter={StaticResource QuarterSizeConverter}}"
-            Style="{StaticResource ThumbStyle}"
             Visibility="{Binding IsNavigationVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-            DragDelta="ResizeGrip_DragDelta" />
+            DragDelta="ResizeGrip_DragDelta"
+            CornerRadius="0.05" />
 
         <ContentControl
             HorizontalAlignment="Stretch"

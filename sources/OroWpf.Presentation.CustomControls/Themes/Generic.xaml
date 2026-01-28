@@ -4,6 +4,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/Themes/CornerButtonStyles.xaml" />
+        <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/Themes/CornerThumbStyles.xaml" />
         <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/PageModel/RoundPageStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

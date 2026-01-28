@@ -1,8 +1,10 @@
 <Solution>
+  <Folder Name="/Ports/">
+    <Project Path="OroWpf.Ports.SettingsAccess/OroWpf.Ports.SettingsAccess.csproj" Id="1acfead1-9f41-492d-b166-e90f6c5b25d2" />
+  </Folder>
   <Folder Name="/SolutionItems/">
     <File Path="Directory.Build.props" />
   </Folder>
-  <Project Path="OroWpf.Ports.SettingsAccess/OroWpf.Ports.SettingsAccess.csproj" Id="1acfead1-9f41-492d-b166-e90f6c5b25d2" />
   <Project Path="OroWpf.Presentation.CustomControls/OroWpf.Presentation.CustomControls.csproj" Id="462c118e-3953-4d43-bb14-ded912cc154c" />
   <Project Path="OroWpf.Presentation/OroWpf.Presentation.csproj" Id="5971f10d-be6e-453c-8a05-6d1a89d18875" />
   <Project Path="OroWpf/OroWpf.csproj" />

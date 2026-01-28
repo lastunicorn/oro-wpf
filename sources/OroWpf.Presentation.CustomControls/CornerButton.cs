@@ -68,7 +68,7 @@ public class CornerButton : Button
 
     #region ContentHorizontalAlignment Dependency Property
 
-    public static readonly DependencyProperty ContentHorizontalAlignmentProperty = DependencyProperty.Register(
+    internal static readonly DependencyPropertyKey ContentHorizontalAlignmentPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(ContentHorizontalAlignment),
         typeof(HorizontalAlignment),
         typeof(CornerButton),
@@ -76,15 +76,15 @@ public class CornerButton : Button
 
     public HorizontalAlignment ContentHorizontalAlignment
     {
-        get => (HorizontalAlignment)GetValue(ContentHorizontalAlignmentProperty);
-        set => SetValue(ContentHorizontalAlignmentProperty, value);
+        get => (HorizontalAlignment)GetValue(ContentHorizontalAlignmentPropertyKey.DependencyProperty);
+        private set => SetValue(ContentHorizontalAlignmentPropertyKey, value);
     }
 
     #endregion
 
     #region ContentVerticalAlignment Dependency Property
 
-    public static readonly DependencyProperty ContentVerticalAlignmentProperty = DependencyProperty.Register(
+    internal static readonly DependencyPropertyKey ContentVerticalAlignmentPropertyKey = DependencyProperty.RegisterReadOnly(
         nameof(ContentVerticalAlignment),
         typeof(VerticalAlignment),
         typeof(CornerButton),
@@ -92,8 +92,8 @@ public class CornerButton : Button
 
     public VerticalAlignment ContentVerticalAlignment
     {
-        get => (VerticalAlignment)GetValue(ContentVerticalAlignmentProperty);
-        set => SetValue(ContentVerticalAlignmentProperty, value);
+        get => (VerticalAlignment)GetValue(ContentVerticalAlignmentPropertyKey.DependencyProperty);
+        private set => SetValue(ContentVerticalAlignmentPropertyKey, value);
     }
 
     #endregion
