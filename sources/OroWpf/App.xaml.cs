@@ -12,7 +12,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         IServiceProvider serviceProvider = ConfigureServices();
-        MainWindow = CreateAndShoeMainWindow(serviceProvider);
+        MainWindow = CreateAndShowMainWindow(serviceProvider);
 
         base.OnStartup(e);
     }
@@ -24,7 +24,7 @@ public partial class App : Application
         return serviceCollection.BuildServiceProvider();
     }
 
-    private static MainWindow CreateAndShoeMainWindow(IServiceProvider serviceProvider)
+    private static MainWindow CreateAndShowMainWindow(IServiceProvider serviceProvider)
     {
         MainWindow mainWindow = serviceProvider.GetService<MainWindow>();
         mainWindow.DataContext = serviceProvider.GetService<MainViewModel>();

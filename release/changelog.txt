@@ -1,0 +1,15 @@
+Oro
+================================================================================
+
+
+1.1.0
+--------------------------------------------------------------------------------
+
+[feature] Added KeepOnTop settings flag to allow the clock to stay on top of
+          other windows.
+[feature] In Settings page, replaced the templates dropdown with a list box.
+
+
+1.0.0
+--------------------------------------------------------------------------------
+First Release
