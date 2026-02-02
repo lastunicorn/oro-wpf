@@ -136,8 +136,6 @@ public class Settings : ISettings
 
     public void SetWindowSize(double width, double height)
     {
-        Debug.WriteLine($"SetWindowSize: width = {width}; height = {height}");
-
         configuration[WindowWidthKey] = width.ToString(CultureInfo.InvariantCulture);
         configuration[WindowHeightKey] = height.ToString(CultureInfo.InvariantCulture);
 
