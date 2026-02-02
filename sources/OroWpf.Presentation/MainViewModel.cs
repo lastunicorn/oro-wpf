@@ -38,6 +38,19 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+    public bool IsSettingsPageActive
+    {
+        get => field;
+        private set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
     public bool KeepOnTop
     {
         get => field;
@@ -104,10 +117,12 @@ public class MainViewModel : ViewModelBase
         if (pageEngine.CurrentPage?.ViewType == typeof(SettingsPage))
         {
             CurrentPage = pageFactory.CreatePage<SettingsPage, SettingsPageModel>();
+            IsSettingsPageActive = true;
         }
         else if (pageEngine.CurrentPage?.ViewType == typeof(ClockPage))
         {
             CurrentPage = GetOrCreateClockPage();
+            IsSettingsPageActive = false;
         }
         else
         {

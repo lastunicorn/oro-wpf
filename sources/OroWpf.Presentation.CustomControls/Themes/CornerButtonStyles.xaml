@@ -36,6 +36,9 @@
                     </Viewbox>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter TargetName="PART_Container" Property="Opacity" Value="1"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_Container" Property="Opacity" Value="1"/>
                             <Setter TargetName="PART_BackgroundPath" Property="Fill" Value="{Binding HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>

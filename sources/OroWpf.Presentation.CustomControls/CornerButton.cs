@@ -114,6 +114,22 @@ public class CornerButton : Button
 
     #endregion
 
+    #region IsActive Dependency Property
+
+    public static readonly DependencyProperty IsActiveProperty = DependencyProperty.Register(
+        nameof(IsActive),
+        typeof(bool),
+        typeof(CornerButton),
+        new PropertyMetadata(false));
+
+    public bool IsActive
+    {
+        get => (bool)GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
+    }
+
+    #endregion
+
     static CornerButton()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(CornerButton), new FrameworkPropertyMetadata(typeof(CornerButton)));

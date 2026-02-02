@@ -39,6 +39,7 @@
             Cursor="Hand"
             Visibility="{Binding IsNavigationVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
             Command="{Binding SettingsCommand}"
+            IsActive="{Binding IsSettingsPageActive}"
             Corner="TopLeft"
             CornerRadius="0.05">
 
