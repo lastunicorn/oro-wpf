@@ -18,7 +18,6 @@
     Background="Transparent"
     ResizeMode="CanResize"
     d:DataContext="{d:DesignInstance local:MainViewModel}"
-    WindowStartupLocation="CenterScreen"
     Topmost="{Binding KeepOnTop}">
 
     <Window.Resources>

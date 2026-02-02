@@ -67,6 +67,8 @@ public class MainViewModel : ViewModelBase
         }
     }
 
+    public ISettings Settings => settings;
+
     public SettingsCommand SettingsCommand { get; }
 
     public MainViewModel(PageEngine pageEngine, ISettings settings, IPageFactory pageFactory)

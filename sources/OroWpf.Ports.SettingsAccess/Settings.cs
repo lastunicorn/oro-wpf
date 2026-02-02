@@ -6,6 +6,8 @@ namespace DustInTheWind.OroWpf.Ports.SettingsAccess;
 public class Settings : ISettings
 {
     private const string KeepOnTopKey = "KeepOnTop";
+    private const string WindowLeftKey = "WindowLeft";
+    private const string WindowTopKey = "WindowTop";
     private readonly IConfigurationRoot configuration;
 
     private readonly Lazy<JsonSerializerOptions> serializerOptions = new(() =>
@@ -33,7 +35,12 @@ public class Settings : ISettings
         get
         {
             string rawValue = configuration[KeepOnTopKey];
-            return rawValue != null && bool.Parse(rawValue);
+
+            if (rawValue == null)
+                return true;
+
+            bool success = bool.TryParse(rawValue, out bool value);
+            return success ? value : true;
         }
         set
         {
@@ -41,6 +48,41 @@ public class Settings : ISettings
             Save();
             OnKeepOnTopChanged();
         }
+    }
+
+    public double WindowLeft
+    {
+        get
+        {
+            string rawValue = configuration[WindowLeftKey];
+            return rawValue != null ? double.Parse(rawValue) : double.NaN;
+        }
+        set
+        {
+            configuration[WindowLeftKey] = value.ToString();
+            Save();
+        }
+    }
+
+    public double WindowTop
+    {
+        get
+        {
+            string rawValue = configuration[WindowTopKey];
+            return rawValue != null ? double.Parse(rawValue) : double.NaN;
+        }
+        set
+        {
+            configuration[WindowTopKey] = value.ToString();
+            Save();
+        }
+    }
+
+    public void SetWindowLocation(double left, double top)
+    {
+        configuration[WindowLeftKey] = left.ToString();
+        configuration[WindowTopKey] = top.ToString();
+        Save();
     }
 
     public event EventHandler KeepOnTopChanged;
@@ -58,8 +100,21 @@ public class Settings : ISettings
 
         AppSettings appSettingsRoot = JsonSerializer.Deserialize<AppSettings>(inputJson);
         appSettingsRoot.KeepOnTop = KeepOnTop;
+        appSettingsRoot.WindowLeft = double.IsNaN(WindowLeft)
+            ? null
+            : WindowLeft;
+        appSettingsRoot.WindowTop = double.IsNaN(WindowTop)
+            ? null
+            : WindowTop;
 
-        string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
-        File.WriteAllText(filePath, outputJson);
+        try
+        {
+            string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
+            File.WriteAllText(filePath, outputJson);
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
     }
 }
