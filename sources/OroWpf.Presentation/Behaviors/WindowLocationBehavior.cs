@@ -43,6 +43,38 @@ public static class WindowLocationBehavior
 
     #endregion
 
+    #region ContainerElement Attached Property
+
+    public static readonly DependencyProperty ContainerElementProperty = DependencyProperty.RegisterAttached(
+        "ContainerElement",
+        typeof(FrameworkElement),
+        typeof(WindowLocationBehavior),
+        new PropertyMetadata(null, OnContainerElementChanged));
+
+    public static FrameworkElement GetContainerElement(DependencyObject obj)
+    {
+        return (FrameworkElement)obj.GetValue(ContainerElementProperty);
+    }
+
+    public static void SetContainerElement(DependencyObject obj, FrameworkElement value)
+    {
+        obj.SetValue(ContainerElementProperty, value);
+    }
+
+    private static void OnContainerElementChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is Window window)
+        {
+            if (e.OldValue is FrameworkElement oldElement)
+                oldElement.SizeChanged -= ContainerElement_SizeChanged;
+
+            if (e.NewValue is FrameworkElement newElement)
+                newElement.SizeChanged += ContainerElement_SizeChanged;
+        }
+    }
+
+    #endregion
+
     private static void Window_SourceInitialized(object sender, EventArgs e)
     {
         if (sender is Window window)
@@ -51,6 +83,13 @@ public static class WindowLocationBehavior
             if (settings != null)
             {
                 LoadWindowLocation(window, settings);
+
+                FrameworkElement container = GetContainerElement(window);
+                if (container != null)
+                {
+                    LoadContainerSize(container, settings);
+                }
+
                 window.ContentRendered += Window_ContentRendered;
             }
         }
@@ -70,8 +109,24 @@ public static class WindowLocationBehavior
         if (sender is Window window && window.IsLoaded)
         {
             ISettings settings = GetSettings(window);
+
             if (settings != null)
                 settings.SetWindowLocation(window.Left, window.Top);
+        }
+    }
+
+    private static void ContainerElement_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        if (sender is FrameworkElement container)
+        {
+            Window window = Window.GetWindow(container);
+            if (window != null && window.IsLoaded)
+            {
+                ISettings settings = GetSettings(window);
+
+                if (settings != null)
+                    settings.SetWindowSize(container.ActualWidth, container.ActualHeight);
+            }
         }
     }
 
@@ -84,6 +139,18 @@ public static class WindowLocationBehavior
         {
             window.Left = left;
             window.Top = top;
+        }
+    }
+
+    private static void LoadContainerSize(FrameworkElement container, ISettings settings)
+    {
+        double width = settings.WindowWidth;
+        double height = settings.WindowHeight;
+
+        if (!double.IsNaN(width) && !double.IsNaN(height))
+        {
+            container.Width = width;
+            container.Height = height;
         }
     }
 

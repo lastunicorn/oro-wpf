@@ -8,7 +8,13 @@ public interface ISettings
 
     public double WindowTop { get; set; }
 
+    public double WindowWidth { get; set; }
+
+    public double WindowHeight { get; set; }
+
     public event EventHandler KeepOnTopChanged;
 
     void SetWindowLocation(double left, double top);
+
+    void SetWindowSize(double width, double height);
 }

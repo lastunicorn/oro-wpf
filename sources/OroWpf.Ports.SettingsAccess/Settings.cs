@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics;
+using System.Globalization;
+using System.Text.Json;
 using DustInTheWind.OroWpf.Ports.SettingsAccess.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -9,6 +11,8 @@ public class Settings : ISettings
     private const string KeepOnTopKey = "KeepOnTop";
     private const string WindowLeftKey = "StartUp:WindowLeft";
     private const string WindowTopKey = "StartUp:WindowTop";
+    private const string WindowWidthKey = "StartUp:WindowWidth";
+    private const string WindowHeightKey = "StartUp:WindowHeight";
     private readonly IConfigurationRoot configuration;
 
     private readonly Lazy<JsonSerializerOptions> serializerOptions = new(() =>
@@ -56,7 +60,7 @@ public class Settings : ISettings
         get
         {
             string rawValue = configuration[WindowLeftKey];
-            return rawValue != null ? double.Parse(rawValue) : double.NaN;
+            return rawValue != null ? double.Parse(rawValue, CultureInfo.InvariantCulture) : double.NaN;
         }
         set
         {
@@ -70,7 +74,7 @@ public class Settings : ISettings
         get
         {
             string rawValue = configuration[WindowTopKey];
-            return rawValue != null ? double.Parse(rawValue) : double.NaN;
+            return rawValue != null ? double.Parse(rawValue, CultureInfo.InvariantCulture) : double.NaN;
         }
         set
         {
@@ -79,10 +83,49 @@ public class Settings : ISettings
         }
     }
 
+    public double WindowWidth
+    {
+        get
+        {
+            string rawValue = configuration[WindowWidthKey];
+            return rawValue != null ? double.Parse(rawValue, CultureInfo.InvariantCulture) : double.NaN;
+        }
+        set
+        {
+            configuration[WindowWidthKey] = value.ToString();
+            Save();
+        }
+    }
+
+    public double WindowHeight
+    {
+        get
+        {
+            string rawValue = configuration[WindowHeightKey];
+            return rawValue != null ? double.Parse(rawValue, CultureInfo.InvariantCulture) : double.NaN;
+        }
+        set
+        {
+            configuration[WindowHeightKey] = value.ToString();
+            Save();
+        }
+    }
+
     public void SetWindowLocation(double left, double top)
     {
-        configuration[WindowLeftKey] = left.ToString();
-        configuration[WindowTopKey] = top.ToString();
+        configuration[WindowLeftKey] = left.ToString(CultureInfo.InvariantCulture);
+        configuration[WindowTopKey] = top.ToString(CultureInfo.InvariantCulture);
+
+        Save();
+    }
+
+    public void SetWindowSize(double width, double height)
+    {
+        Debug.WriteLine($"SetWindowSize: width = {width}; height = {height}");
+
+        configuration[WindowWidthKey] = width.ToString(CultureInfo.InvariantCulture);
+        configuration[WindowHeightKey] = height.ToString(CultureInfo.InvariantCulture);
+
         Save();
     }
 
@@ -110,6 +153,12 @@ public class Settings : ISettings
         appSettingsRoot.StartUp.WindowTop = double.IsNaN(WindowTop)
             ? null
             : WindowTop;
+        appSettingsRoot.StartUp.WindowWidth = double.IsNaN(WindowWidth)
+            ? null
+            : WindowWidth;
+        appSettingsRoot.StartUp.WindowHeight = double.IsNaN(WindowHeight)
+            ? null
+            : WindowHeight;
 
         string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
         File.WriteAllText(filePath, outputJson);

@@ -20,7 +20,8 @@
     ResizeMode="CanResize"
     d:DataContext="{d:DesignInstance local:MainViewModel}"
     Topmost="{Binding KeepOnTop}"
-    behaviors:WindowLocationBehavior.Settings="{Binding Settings}">
+    behaviors:WindowLocationBehavior.Settings="{Binding Settings}"
+    behaviors:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}">
 
     <Window.Resources>
         <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
