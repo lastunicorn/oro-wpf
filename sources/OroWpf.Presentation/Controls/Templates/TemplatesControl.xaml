@@ -21,13 +21,6 @@
             <ColumnDefinition Width="*" MinWidth="50" />
         </Grid.ColumnDefinitions>
 
-        <!--<ComboBox
-            DockPanel.Dock="Top"
-            DisplayMemberPath="Name"
-            Margin="0 5 0 0"
-            ItemsSource="{Binding TemplateTypes}"
-            SelectedItem="{Binding SelectedTemplateType}"/>-->
-
         <ListBox
             Grid.Column="0"
             DisplayMemberPath="Name"
@@ -43,6 +36,7 @@
             Grid.Column="2"
             x:Name="analogClock1"
             ClockTemplate="{Binding SelectedTemplate}"
+            Movement="{Binding ClockMovement}"
             Margin="8 0 0 0" />
 
     </Grid>

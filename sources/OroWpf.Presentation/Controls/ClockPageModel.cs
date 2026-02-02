@@ -1,5 +1,5 @@
-﻿using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.ClockWpf.TimeProviders;
+﻿using DustInTheWind.ClockWpf.Movements;
+using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
@@ -21,7 +21,7 @@ public class ClockPageModel : PageViewModel
         }
     }
 
-    public ITimeProvider TimeProvider
+    public IMovement ClockMovement
     {
         get => field;
         set
@@ -47,8 +47,8 @@ public class ClockPageModel : PageViewModel
         applicationState.ClockTemplateChanged += HandleClockTemplateChanged;
         ClockTemplate = applicationState.ClockTemplate;
 
-        TimeProvider = new LocalTimeProvider();
-        TimeProvider.Start();
+        ClockMovement = new LocalTimeMovement();
+        ClockMovement.Start();
 
         this.applicationState = applicationState;
     }

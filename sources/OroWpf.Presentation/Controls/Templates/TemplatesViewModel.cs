@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using DustInTheWind.ClockWpf;
+using DustInTheWind.ClockWpf.Movements;
 using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.OroWpf.Presentation;
-using DustInTheWind.OroWpf.Presentation.Controls;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls.Templates;
 
@@ -39,6 +39,8 @@ public class TemplatesViewModel : ViewModelBase
         }
     }
 
+    public IMovement ClockMovement { get; }
+
     public TemplatesViewModel(ApplicationState applicationState)
     {
         this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
@@ -68,6 +70,11 @@ public class TemplatesViewModel : ViewModelBase
             SelectedTemplateType = TemplateTypes
                 .FirstOrDefault(x => x.Type == selectedClockTemplateType);
         }
+
+        LocalTimeMovement localTimeMovement = new();
+        localTimeMovement.Start();
+
+        ClockMovement = localTimeMovement;
     }
 
     private void PublishTemplate(TemplateItemModel templateInfo)

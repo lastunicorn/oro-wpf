@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DustInTheWind.ClockWpf" Version="1.1.0" />
+		<PackageReference Include="DustInTheWind.ClockWpf" Version="1.2.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
 	</ItemGroup>
 
@@ -40,6 +40,9 @@
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="changelog.txt">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
