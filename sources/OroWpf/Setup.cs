@@ -1,4 +1,6 @@
 ﻿using DustInTheWind.ClockWpf.Templates;
+using DustInTheWind.OroWpf.Infrastructure.Jobs;
+using DustInTheWind.OroWpf.Jobs;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation;
 using DustInTheWind.OroWpf.Presentation.Controls;
@@ -10,18 +12,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;
 
-internal static class  Setup
+internal static class Setup
 {
     public static void ConfigureServices(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<ISettings, Settings>();
+        ISettings settings = new Settings();
+        serviceCollection.AddSingleton(settings);
 
-        ApplicationState applicationState = CreateApplicationState();
+        ApplicationState applicationState = CreateApplicationState(settings);
         serviceCollection.AddSingleton(applicationState);
 
         PageEngine pageEngine = CreatePageEngine();
         serviceCollection.AddSingleton(pageEngine);
         serviceCollection.AddSingleton<IPageFactory, PageFactory>();
+
+        serviceCollection.AddJobsFromAssemblyContaining<ClockTemplateChangedJob>();
 
         serviceCollection.AddTransient<MainWindow>();
         serviceCollection.AddTransient<MainViewModel>();
@@ -38,7 +43,7 @@ internal static class  Setup
         serviceCollection.AddTransient<SettingsCloseCommand>();
     }
 
-    private static ApplicationState CreateApplicationState()
+    private static ApplicationState CreateApplicationState(ISettings settings)
     {
         ApplicationState applicationState = new();
 
@@ -47,13 +52,28 @@ internal static class  Setup
 
         if (templateTypes?.Count > 0)
         {
-            Type selectedTemplateType = templateTypes
-             .FirstOrDefault(x => x == typeof(DefaultTemplate));
+            Type selectedTemplateType = LoadTemplateTypeFromSettings(settings, templateTypes);
 
             applicationState.ClockTemplate = (ClockTemplate)Activator.CreateInstance(selectedTemplateType);
         }
 
         return applicationState;
+    }
+
+    private static Type LoadTemplateTypeFromSettings(ISettings settings, List<Type> templateTypes)
+    {
+        string savedTemplateTypeName = settings.ClockTemplateType;
+
+        if (!string.IsNullOrEmpty(savedTemplateTypeName))
+        {
+            Type savedTemplateType = templateTypes
+                .FirstOrDefault(x => x.FullName == savedTemplateTypeName || x.Name == savedTemplateTypeName);
+
+            if (savedTemplateType != null)
+                return savedTemplateType;
+        }
+
+        return templateTypes.FirstOrDefault(x => x == typeof(DefaultTemplate)) ?? templateTypes.First();
     }
 
     private static IEnumerable<Type> EnumerateClockTemplates()

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DustInTheWind.OroWpf.Infrastructure.Jobs;
 using DustInTheWind.OroWpf.Presentation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,10 +10,14 @@ namespace DustInTheWind.OroWpf;
 /// </summary>
 public partial class App : Application
 {
+    private IServiceProvider serviceProvider;
+
     protected override void OnStartup(StartupEventArgs e)
     {
-        IServiceProvider serviceProvider = ConfigureServices();
+        serviceProvider = ConfigureServices();
         MainWindow = CreateAndShowMainWindow(serviceProvider);
+
+        CreateAndStartJobs();
 
         base.OnStartup(e);
     }
@@ -32,5 +37,23 @@ public partial class App : Application
         mainWindow.Show();
 
         return mainWindow;
+    }
+
+    private void CreateAndStartJobs()
+    {
+        JobEngine jobEngine = serviceProvider.GetService<JobEngine>();
+
+        IEnumerable<IJob> jobs = serviceProvider.GetServices<IJob>();
+        jobEngine.AddRange(jobs);
+
+        jobEngine.Start();
+    }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        JobEngine jobEngine = serviceProvider.GetService<JobEngine>();
+        jobEngine.Stop();
+
+        base.OnExit(e);
     }
 }

@@ -12,6 +12,8 @@ public interface ISettings
 
     public double WindowHeight { get; set; }
 
+    public string ClockTemplateType { get; set; }
+
     public event EventHandler KeepOnTopChanged;
 
     void SetWindowLocation(double left, double top);

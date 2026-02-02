@@ -9,6 +9,7 @@ Oro
          other windows.
 [new]    In Settings page, replaced the templates dropdown with a list box.
 [change] Update to Clock WPF 1.2.0 (more clock templates)
+[new]    Save/Load the loaction and size of the clock.
 
 
 1.0.0

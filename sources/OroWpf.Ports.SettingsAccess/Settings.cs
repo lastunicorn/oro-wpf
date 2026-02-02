@@ -13,6 +13,7 @@ public class Settings : ISettings
     private const string WindowTopKey = "StartUp:WindowTop";
     private const string WindowWidthKey = "StartUp:WindowWidth";
     private const string WindowHeightKey = "StartUp:WindowHeight";
+    private const string ClockTemplateTypeKey = "ClockTemplateType";
     private readonly IConfigurationRoot configuration;
 
     private readonly Lazy<JsonSerializerOptions> serializerOptions = new(() =>
@@ -111,6 +112,20 @@ public class Settings : ISettings
         }
     }
 
+    public string ClockTemplateType
+    {
+        get
+        {
+            string rawValue = configuration[ClockTemplateTypeKey];
+            return rawValue;
+        }
+        set
+        {
+            configuration[ClockTemplateTypeKey] = value;
+            Save();
+        }
+    }
+
     public void SetWindowLocation(double left, double top)
     {
         configuration[WindowLeftKey] = left.ToString(CultureInfo.InvariantCulture);
@@ -159,6 +174,8 @@ public class Settings : ISettings
         appSettingsRoot.StartUp.WindowHeight = double.IsNaN(WindowHeight)
             ? null
             : WindowHeight;
+
+        appSettingsRoot.ClockTemplateType = ClockTemplateType;
 
         string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
         File.WriteAllText(filePath, outputJson);

@@ -5,6 +5,7 @@
   <Folder Name="/SolutionItems/">
     <File Path="Directory.Build.props" />
   </Folder>
+  <Project Path="OroWpf.Infrastructure.Jobs/OroWpf.Infrastructure.Jobs.csproj" Id="fa9bf3d5-6f76-44e9-b529-d01aa1c7a10f" />
   <Project Path="OroWpf.Presentation.CustomControls/OroWpf.Presentation.CustomControls.csproj" Id="462c118e-3953-4d43-bb14-ded912cc154c" />
   <Project Path="OroWpf.Presentation/OroWpf.Presentation.csproj" Id="5971f10d-be6e-453c-8a05-6d1a89d18875" />
   <Project Path="OroWpf/OroWpf.csproj" />
