@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using DustInTheWind.OroWpf.Ports.SettingsAccess.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace DustInTheWind.OroWpf.Ports.SettingsAccess;
@@ -6,8 +7,8 @@ namespace DustInTheWind.OroWpf.Ports.SettingsAccess;
 public class Settings : ISettings
 {
     private const string KeepOnTopKey = "KeepOnTop";
-    private const string WindowLeftKey = "WindowLeft";
-    private const string WindowTopKey = "WindowTop";
+    private const string WindowLeftKey = "StartUp:WindowLeft";
+    private const string WindowTopKey = "StartUp:WindowTop";
     private readonly IConfigurationRoot configuration;
 
     private readonly Lazy<JsonSerializerOptions> serializerOptions = new(() =>
@@ -100,21 +101,17 @@ public class Settings : ISettings
 
         AppSettings appSettingsRoot = JsonSerializer.Deserialize<AppSettings>(inputJson);
         appSettingsRoot.KeepOnTop = KeepOnTop;
-        appSettingsRoot.WindowLeft = double.IsNaN(WindowLeft)
+
+        appSettingsRoot.StartUp ??= new StartUp();
+
+        appSettingsRoot.StartUp.WindowLeft = double.IsNaN(WindowLeft)
             ? null
             : WindowLeft;
-        appSettingsRoot.WindowTop = double.IsNaN(WindowTop)
+        appSettingsRoot.StartUp.WindowTop = double.IsNaN(WindowTop)
             ? null
             : WindowTop;
 
-        try
-        {
-            string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
-            File.WriteAllText(filePath, outputJson);
-        }
-        catch (Exception ex)
-        {
-            throw;
-        }
+        string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
+        File.WriteAllText(filePath, outputJson);
     }
 }

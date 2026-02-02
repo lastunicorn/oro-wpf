@@ -10,6 +10,7 @@
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
     xmlns:presentation="clr-namespace:DustInTheWind.OroWpf.Presentation"
+    xmlns:behaviors="clr-namespace:DustInTheWind.OroWpf.Presentation.Behaviors"
     
     mc:Ignorable="d"
     SizeToContent="WidthAndHeight"
@@ -18,7 +19,8 @@
     Background="Transparent"
     ResizeMode="CanResize"
     d:DataContext="{d:DesignInstance local:MainViewModel}"
-    Topmost="{Binding KeepOnTop}">
+    Topmost="{Binding KeepOnTop}"
+    behaviors:WindowLocationBehavior.Settings="{Binding Settings}">
 
     <Window.Resources>
         <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
