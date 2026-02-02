@@ -1,9 +1,7 @@
 # Oro (WPF)
 
-A WPF application that displays an analog clock.
+An analog clock. Works on Windows only. It supports multiple templates. Change them from settings.
 
-It supports multiple templates.
-
-The application works under Windows and it was created in .NET 10
+CreatedA using .NET 10 and WPF.
 
 ![Clock](doc/main/clock.png)
