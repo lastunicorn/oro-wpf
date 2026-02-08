@@ -9,6 +9,7 @@ namespace DustInTheWind.OroWpf.Ports.SettingsAccess;
 public class Settings : ISettings
 {
     private const string KeepOnTopKey = "KeepOnTop";
+    private const string CounterclockwiseKey = "Counterclockwise";
     private const string WindowLeftKey = "StartUp:WindowLeft";
     private const string WindowTopKey = "StartUp:WindowTop";
     private const string WindowWidthKey = "StartUp:WindowWidth";
@@ -53,6 +54,26 @@ public class Settings : ISettings
             configuration[KeepOnTopKey] = value.ToString();
             Save();
             OnKeepOnTopChanged();
+        }
+    }
+
+    public bool Counterclockwise
+    {
+        get
+        {
+            string rawValue = configuration[CounterclockwiseKey];
+
+            if (rawValue == null)
+                return false;
+
+            bool success = bool.TryParse(rawValue, out bool value);
+            return success ? value : true;
+        }
+        set
+        {
+            configuration[CounterclockwiseKey] = value.ToString();
+            Save();
+            OnCounterclockwiseChanged();
         }
     }
 
@@ -143,10 +164,16 @@ public class Settings : ISettings
     }
 
     public event EventHandler KeepOnTopChanged;
+    public event EventHandler CounterclockwiseChanged;
 
     private void OnKeepOnTopChanged()
     {
         KeepOnTopChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void OnCounterclockwiseChanged()
+    {
+        CounterclockwiseChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void Save()
@@ -157,6 +184,7 @@ public class Settings : ISettings
 
         AppSettings appSettingsRoot = JsonSerializer.Deserialize<AppSettings>(inputJson);
         appSettingsRoot.KeepOnTop = KeepOnTop;
+        appSettingsRoot.Counterclockwise = Counterclockwise;
 
         appSettingsRoot.StartUp ??= new StartUp();
 

@@ -37,7 +37,8 @@
             x:Name="analogClock1"
             ClockTemplate="{Binding SelectedTemplate}"
             Movement="{Binding ClockMovement}"
-            Margin="8 0 0 0" />
+            Margin="8 0 0 0"
+            RotationDirection="{Binding ClockDirection}"/>
 
     </Grid>
 

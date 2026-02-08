@@ -5,17 +5,61 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settings="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Settings"
+    xmlns:dataConvertors="clr-namespace:DustInTheWind.OroWpf.Presentation.DataConvertors"
+    xmlns:shapes="clr-namespace:DustInTheWind.ClockWpf.Shapes;assembly=DustInTheWind.ClockWpf"
     
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800"
     d:DataContext="{d:DesignInstance settings:SettingsViewModel}">
-    
+
+    <UserControl.Resources>
+        <dataConvertors:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+    </UserControl.Resources>
+
     <Grid VerticalAlignment="Top">
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <CheckBox
+            Grid.Row="0"
             IsChecked="{Binding KeepOnTop}"
             Content="Keep on top"/>
+
+        <GroupBox
+            Grid.Row="2"
+            Margin="0 8 0 0">
+
+            <GroupBox.Header>
+
+                <TextBlock
+                    Text="Clock Direction"
+                    FontWeight="DemiBold" />
+
+            </GroupBox.Header>
+
+            <StackPanel 
+                Orientation="Vertical"
+                Margin="8">
+
+                <RadioButton 
+                    Content="Clockwise"
+                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Clockwise}}"
+                    Margin="0 0 0 8"
+                    VerticalAlignment="Center"/>
+
+                <RadioButton 
+                    Content="Counterclockwise"
+                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Counterclockwise}}"
+                    VerticalAlignment="Center"/>
+            </StackPanel>
+
+        </GroupBox>
+
     </Grid>
-    
+
 </UserControl>

@@ -3,6 +3,8 @@
 public interface ISettings
 {
     public bool KeepOnTop { get; set; }
+    
+    public bool Counterclockwise { get; set; }
 
     public double WindowLeft { get; set; }
 
@@ -15,6 +17,7 @@ public interface ISettings
     public string ClockTemplateType { get; set; }
 
     public event EventHandler KeepOnTopChanged;
+    event EventHandler CounterclockwiseChanged;
 
     void SetWindowLocation(double left, double top);
 

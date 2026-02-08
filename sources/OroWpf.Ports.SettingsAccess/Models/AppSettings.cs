@@ -3,6 +3,8 @@
 internal class AppSettings
 {
     public bool KeepOnTop { get; set; }
+    
+    public bool Counterclockwise { get; set; }
 
     public StartUp StartUp { get; set; }
 

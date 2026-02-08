@@ -1,12 +1,15 @@
 ﻿using DustInTheWind.ClockWpf.Movements;
+using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
+using DustInTheWind.OroWpf.Ports.SettingsAccess;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 
 public class ClockPageModel : PageViewModel
 {
     private readonly ApplicationState applicationState;
+    private readonly ISettings settings;
 
     public ClockTemplate ClockTemplate
     {
@@ -35,26 +38,61 @@ public class ClockPageModel : PageViewModel
         }
     }
 
+    public RotationDirection ClockDirection
+    {
+        get => field;
+        set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
     public ToggleNavigationCommand ToggleNavigationCommand { get; }
 
-    public ClockPageModel(ApplicationState applicationState, PageEngine pageEngine)
+    public ClockPageModel(ApplicationState applicationState, PageEngine pageEngine, ISettings settings)
     {
         ArgumentNullException.ThrowIfNull(pageEngine);
         this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
+        this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
         ToggleNavigationCommand = new ToggleNavigationCommand(pageEngine);
 
         applicationState.ClockTemplateChanged += HandleClockTemplateChanged;
-        ClockTemplate = applicationState.ClockTemplate;
+        settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
 
-        ClockMovement = new LocalTimeMovement();
-        ClockMovement.Start();
+        Initialize();
+    }
 
-        this.applicationState = applicationState;
+    private void Initialize()
+    {
+        Initialize(() =>
+        {
+            ClockTemplate = applicationState.ClockTemplate;
+
+            LocalTimeMovement clockMovement = new();
+            clockMovement.Start();
+
+            ClockMovement = clockMovement;
+
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
     }
 
     private void HandleClockTemplateChanged(object sender, EventArgs e)
     {
         ClockTemplate = applicationState.ClockTemplate;
+    }
+
+    private void HandleCounterclockwiseChanged(object sender, EventArgs e)
+    {
+        ClockDirection = settings.Counterclockwise
+            ? RotationDirection.Counterclockwise
+            : RotationDirection.Clockwise;
     }
 }

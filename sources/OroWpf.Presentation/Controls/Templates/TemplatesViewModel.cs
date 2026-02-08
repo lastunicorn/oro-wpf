@@ -1,12 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using DustInTheWind.ClockWpf.Movements;
+using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.ClockWpf.Templates;
+using DustInTheWind.OroWpf.Ports.SettingsAccess;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls.Templates;
 
 public class TemplatesViewModel : ViewModelBase
 {
     private readonly ApplicationState applicationState;
+    private readonly ISettings settings;
 
     public ObservableCollection<TemplateItemModel> TemplateTypes { get; } = [];
 
@@ -38,42 +41,88 @@ public class TemplatesViewModel : ViewModelBase
         }
     }
 
-    public IMovement ClockMovement { get; }
+    public IMovement ClockMovement
+    {
+        get => field;
+        private set
+        {
+            if (field == value)
+                return;
 
-    public TemplatesViewModel(ApplicationState applicationState)
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public RotationDirection ClockDirection
+    {
+        get => field;
+        set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public TemplatesViewModel(ApplicationState applicationState, ISettings settings)
     {
         this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
+        this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
-        if (applicationState.AvailableTemplateTypes?.Count > 0)
+        settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
+
+        Initialize();
+    }
+
+    private void HandleCounterclockwiseChanged(object sender, EventArgs e)
+    {
+        ClockDirection = settings.Counterclockwise
+            ? RotationDirection.Counterclockwise
+            : RotationDirection.Clockwise;
+    }
+
+    private void Initialize()
+    {
+        Initialize(() =>
         {
-            IEnumerable<TemplateItemModel> clockTemplates = applicationState.AvailableTemplateTypes
-                .Select(x => new TemplateItemModel
-                {
-                    Name = x.Name
-                        .Replace("ClockTemplate", "")
-                        .Replace("Template", ""),
-                    Type = x
-                })
-                .OrderBy(x => x.Name)
-                .ToList();
+            if (applicationState.AvailableTemplateTypes?.Count > 0)
+            {
+                IEnumerable<TemplateItemModel> clockTemplates = applicationState.AvailableTemplateTypes
+                    .Select(x => new TemplateItemModel
+                    {
+                        Name = x.Name
+                            .Replace("ClockTemplate", "")
+                            .Replace("Template", ""),
+                        Type = x
+                    })
+                    .OrderBy(x => x.Name)
+                    .ToList();
 
-            foreach (TemplateItemModel templateItemModel in clockTemplates)
-                TemplateTypes.Add(templateItemModel);
-        }
+                foreach (TemplateItemModel templateItemModel in clockTemplates)
+                    TemplateTypes.Add(templateItemModel);
+            }
 
-        SelectedTemplate = applicationState.ClockTemplate;
+            SelectedTemplate = applicationState.ClockTemplate;
 
-        if (applicationState.ClockTemplate != null)
-        {
-            Type selectedClockTemplateType = applicationState.ClockTemplate.GetType();
-            SelectedTemplateType = TemplateTypes
-                .FirstOrDefault(x => x.Type == selectedClockTemplateType);
-        }
+            if (applicationState.ClockTemplate != null)
+            {
+                Type selectedClockTemplateType = applicationState.ClockTemplate.GetType();
+                SelectedTemplateType = TemplateTypes
+                    .FirstOrDefault(x => x.Type == selectedClockTemplateType);
+            }
 
-        LocalTimeMovement localTimeMovement = new();
-        localTimeMovement.Start();
+            LocalTimeMovement localTimeMovement = new();
+            localTimeMovement.Start();
 
-        ClockMovement = localTimeMovement;
+            ClockMovement = localTimeMovement;
+
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
     }
 
     private void PublishTemplate(TemplateItemModel templateInfo)
