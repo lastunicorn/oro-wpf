@@ -9,6 +9,7 @@ public class Settings : ISettings
 {
     private const string KeepOnTopKey = "KeepOnTop";
     private const string CounterclockwiseKey = "Counterclockwise";
+    private const string RefreshRateKey = "RefreshRate";
     private const string WindowLeftKey = "StartUp:WindowLeft";
     private const string WindowTopKey = "StartUp:WindowTop";
     private const string WindowWidthKey = "StartUp:WindowWidth";
@@ -80,7 +81,7 @@ public class Settings : ISettings
     {
         get
         {
-            string rawValue = configuration[CounterclockwiseKey];
+            string rawValue = configuration[RefreshRateKey];
 
             if (rawValue == null)
                 return 10;
@@ -90,7 +91,7 @@ public class Settings : ISettings
         }
         set
         {
-            configuration[CounterclockwiseKey] = value.ToString();
+            configuration[RefreshRateKey] = value.ToString();
             Save();
             OnRefreshRateChanged();
         }
