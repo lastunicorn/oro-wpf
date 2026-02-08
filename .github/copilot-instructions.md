@@ -21,3 +21,7 @@
   - `Having` describes the most important setup details.
   - `When` describes the action tested.
   - `Then` describes the expected result.
+
+## WPF
+
+- Avoid writing code in the code behind class of a window or user control. Instead, create attached behaviors.
