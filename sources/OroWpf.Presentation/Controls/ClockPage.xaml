@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:clockWpf="clr-namespace:DustInTheWind.ClockWpf;assembly=DustInTheWind.ClockWpf"
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
+    xmlns:pageModel="clr-namespace:DustInTheWind.OroWpf.Infrastructure.PageModel;assembly=DustInTheWind.OroWpf.Infrastructure.PageModel"
     
     mc:Ignorable="d"
     d:DesignHeight="450"

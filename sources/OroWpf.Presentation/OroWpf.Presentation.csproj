@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\OroWpf.Infrastructure.PageModel\OroWpf.Infrastructure.PageModel.csproj" />
 		<ProjectReference Include="..\OroWpf.Ports.SettingsAccess\OroWpf.Ports.SettingsAccess.csproj" />
 		<ProjectReference Include="..\OroWpf.Presentation.CustomControls\OroWpf.Presentation.CustomControls.csproj" />
 	</ItemGroup>

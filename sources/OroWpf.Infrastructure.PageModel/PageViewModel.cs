@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+namespace DustInTheWind.OroWpf.Infrastructure.PageModel;
 
 public class PageViewModel : INotifyPropertyChanged
 {

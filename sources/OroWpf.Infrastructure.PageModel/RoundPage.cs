@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+namespace DustInTheWind.OroWpf.Infrastructure.PageModel;
 
 /// <summary>
 /// Interaction logic for RoundPage.xaml

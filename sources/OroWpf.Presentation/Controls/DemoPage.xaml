@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pageModel="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
+    xmlns:pageModel="clr-namespace:DustInTheWind.OroWpf.Infrastructure.PageModel;assembly=DustInTheWind.OroWpf.Infrastructure.PageModel"
     
     mc:Ignorable="d"
     d:DesignHeight="450"

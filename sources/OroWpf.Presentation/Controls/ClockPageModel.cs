@@ -1,6 +1,6 @@
 ﻿using DustInTheWind.ClockWpf.Movements;
 using DustInTheWind.ClockWpf.Templates;
-using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+using DustInTheWind.OroWpf.Infrastructure.PageModel;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;

@@ -1,6 +1,5 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
-using DustInTheWind.OroWpf.Presentation.Controls;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 

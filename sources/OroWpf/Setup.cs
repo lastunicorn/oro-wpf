@@ -1,5 +1,6 @@
 ﻿using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Infrastructure.Jobs;
+using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Jobs;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation;
@@ -7,7 +8,6 @@ using DustInTheWind.OroWpf.Presentation.Controls;
 using DustInTheWind.OroWpf.Presentation.Controls.About;
 using DustInTheWind.OroWpf.Presentation.Controls.Settings;
 using DustInTheWind.OroWpf.Presentation.Controls.Templates;
-using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;

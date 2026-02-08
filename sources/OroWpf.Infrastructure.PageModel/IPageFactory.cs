@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+namespace DustInTheWind.OroWpf.Infrastructure.PageModel;
 
 public interface IPageFactory
 {

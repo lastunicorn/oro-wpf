@@ -8,4 +8,10 @@
 		<AssemblyName>DustInTheWind.$(MSBuildProjectName)</AssemblyName>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<Compile Update="RoundPage.cs">
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+
 </Project>

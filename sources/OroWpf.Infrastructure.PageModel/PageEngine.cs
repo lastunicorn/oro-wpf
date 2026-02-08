@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
+﻿namespace DustInTheWind.OroWpf.Infrastructure.PageModel;
 
 public class PageEngine
 {

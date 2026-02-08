@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using DustInTheWind.ClockWpf;
 using DustInTheWind.ClockWpf.Movements;
 using DustInTheWind.ClockWpf.Templates;
 

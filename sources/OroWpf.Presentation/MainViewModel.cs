@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
+using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation.Controls;
-using DustInTheWind.OroWpf.Presentation.CustomControls.PageModel;
 
 namespace DustInTheWind.OroWpf.Presentation;
 

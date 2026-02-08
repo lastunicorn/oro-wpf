@@ -4,6 +4,10 @@ using DustInTheWind.OroWpf.Presentation;
 
 namespace DustInTheWind.OroWpf.Jobs;
 
+/// <summary>
+/// A background job that monitors changes to the clock template and persists them into the
+/// application settings.
+/// </summary>
 internal class ClockTemplateChangedJob : IJob
 {
     private readonly ApplicationState applicationState;

@@ -34,6 +34,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\OroWpf.Infrastructure.Jobs\OroWpf.Infrastructure.Jobs.csproj" />
+		<ProjectReference Include="..\OroWpf.Infrastructure.PageModel\OroWpf.Infrastructure.PageModel.csproj" />
 		<ProjectReference Include="..\OroWpf.Ports.SettingsAccess\OroWpf.Ports.SettingsAccess.csproj" />
 		<ProjectReference Include="..\OroWpf.Presentation\OroWpf.Presentation.csproj" />
 	</ItemGroup>
@@ -45,10 +46,6 @@
 		<None Update="changelog.txt">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="JobModel\" />
 	</ItemGroup>
 
 </Project>
