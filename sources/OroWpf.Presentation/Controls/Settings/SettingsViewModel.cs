@@ -23,22 +23,6 @@ public class SettingsViewModel : ViewModelBase
         }
     }
 
-    public bool Counterclockwise
-    {
-        get => field;
-        set
-        {
-            if (field == value)
-                return;
-
-            field = value;
-            OnPropertyChanged();
-
-            if (!IsInitializing)
-                settings.Counterclockwise = value;
-        }
-    }
-
     public RotationDirection ClockDirection
     {
         get => field;
@@ -62,21 +46,57 @@ public class SettingsViewModel : ViewModelBase
         }
     }
 
+    public double RefreshRate
+    {
+        get => field;
+        set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+
+            if (!IsInitializing)
+                settings.RefreshRate = value;
+        }
+    }
+
     public SettingsViewModel(ISettings settings)
     {
         this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
-        settings.CounterclockwiseChanged += HandleCounterclockwiseChanged; ;
+        settings.KeepOnTopChanged += HandleKeepOnTopChanged;
+        settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
+        settings.RefreshRateChanged += HandleRefreshRateChanged;
 
         Initialize();
     }
 
+    private void HandleKeepOnTopChanged(object sender, EventArgs e)
+    {
+        Initialize(() =>
+        {
+            KeepOnTop = settings.KeepOnTop;
+        });
+    }
+
     private void HandleCounterclockwiseChanged(object sender, EventArgs e)
     {
-        Counterclockwise = settings.Counterclockwise;
-        ClockDirection = settings.Counterclockwise
-            ? RotationDirection.Counterclockwise
-            : RotationDirection.Clockwise;
+        Initialize(() =>
+        {
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
+    }
+
+    private void HandleRefreshRateChanged(object sender, EventArgs e)
+    {
+        Initialize(() =>
+        {
+            RefreshRate = settings.RefreshRate;
+        });
     }
 
     private void Initialize()
@@ -84,10 +104,10 @@ public class SettingsViewModel : ViewModelBase
         Initialize(() =>
         {
             KeepOnTop = settings.KeepOnTop;
-            Counterclockwise = settings.Counterclockwise;
             ClockDirection = settings.Counterclockwise
                 ? RotationDirection.Counterclockwise
                 : RotationDirection.Clockwise;
+            RefreshRate = settings.RefreshRate;
         });
     }
 }

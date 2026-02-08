@@ -4,12 +4,12 @@ Oro
 
 1.2.0
 --------------------------------------------------------------------------------
-
+[new   ] Added support for counterclockwise rotation of the clock hands.
+[new   ] Added settings for clock's refresh rate.
 
 
 1.1.0
 --------------------------------------------------------------------------------
-
 [new]    Added KeepOnTop settings flag to allow the clock to stay on top of
          other windows.
 [new]    In Settings page, replaced the templates dropdown with a list box.

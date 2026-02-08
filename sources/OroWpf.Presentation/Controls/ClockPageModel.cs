@@ -63,6 +63,7 @@ public class ClockPageModel : PageViewModel
 
         applicationState.ClockTemplateChanged += HandleClockTemplateChanged;
         settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
+        settings.RefreshRateChanged += HandleRefreshRateChanged;
 
         Initialize();
     }
@@ -73,7 +74,10 @@ public class ClockPageModel : PageViewModel
         {
             ClockTemplate = applicationState.ClockTemplate;
 
-            LocalTimeMovement clockMovement = new();
+            LocalTimeMovement clockMovement = new()
+            {
+                TickInterval = (int)Math.Round(TimeSpan.MillisecondsPerSecond / settings.RefreshRate)
+            };
             clockMovement.Start();
 
             ClockMovement = clockMovement;
@@ -86,13 +90,30 @@ public class ClockPageModel : PageViewModel
 
     private void HandleClockTemplateChanged(object sender, EventArgs e)
     {
-        ClockTemplate = applicationState.ClockTemplate;
+        Initialize(() =>
+        {
+            ClockTemplate = applicationState.ClockTemplate;
+        });
     }
 
     private void HandleCounterclockwiseChanged(object sender, EventArgs e)
     {
-        ClockDirection = settings.Counterclockwise
-            ? RotationDirection.Counterclockwise
-            : RotationDirection.Clockwise;
+        Initialize(() =>
+        {
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
+    }
+
+    private void HandleRefreshRateChanged(object sender, EventArgs e)
+    {
+        if (ClockMovement == null)
+            return;
+
+        Initialize(() =>
+        {
+            ClockMovement.TickInterval = (int)Math.Round(TimeSpan.MillisecondsPerSecond / settings.RefreshRate);
+        });
     }
 }

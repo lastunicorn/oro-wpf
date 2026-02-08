@@ -2,22 +2,25 @@
 
 public interface ISettings
 {
-    public bool KeepOnTop { get; set; }
-    
-    public bool Counterclockwise { get; set; }
+    bool KeepOnTop { get; set; }
 
-    public double WindowLeft { get; set; }
+    bool Counterclockwise { get; set; }
 
-    public double WindowTop { get; set; }
+    double RefreshRate { get; set; }
 
-    public double WindowWidth { get; set; }
+    double WindowLeft { get; set; }
 
-    public double WindowHeight { get; set; }
+    double WindowTop { get; set; }
 
-    public string ClockTemplateType { get; set; }
+    double WindowWidth { get; set; }
 
-    public event EventHandler KeepOnTopChanged;
+    double WindowHeight { get; set; }
+
+    string ClockTemplateType { get; set; }
+
+    event EventHandler KeepOnTopChanged;
     event EventHandler CounterclockwiseChanged;
+    event EventHandler RefreshRateChanged;
 
     void SetWindowLocation(double left, double top);
 

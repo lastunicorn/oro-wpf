@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.Json;
 using DustInTheWind.OroWpf.Ports.SettingsAccess.Models;
 using Microsoft.Extensions.Configuration;
@@ -74,6 +73,26 @@ public class Settings : ISettings
             configuration[CounterclockwiseKey] = value.ToString();
             Save();
             OnCounterclockwiseChanged();
+        }
+    }
+
+    public double RefreshRate
+    {
+        get
+        {
+            string rawValue = configuration[CounterclockwiseKey];
+
+            if (rawValue == null)
+                return 10;
+
+            bool success = double.TryParse(rawValue, out double value);
+            return success ? value : 10;
+        }
+        set
+        {
+            configuration[CounterclockwiseKey] = value.ToString();
+            Save();
+            OnRefreshRateChanged();
         }
     }
 
@@ -165,6 +184,7 @@ public class Settings : ISettings
 
     public event EventHandler KeepOnTopChanged;
     public event EventHandler CounterclockwiseChanged;
+    public event EventHandler RefreshRateChanged;
 
     private void OnKeepOnTopChanged()
     {
@@ -176,6 +196,11 @@ public class Settings : ISettings
         CounterclockwiseChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    private void OnRefreshRateChanged()
+    {
+        RefreshRateChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     private void Save()
     {
         string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
@@ -185,6 +210,7 @@ public class Settings : ISettings
         AppSettings appSettingsRoot = JsonSerializer.Deserialize<AppSettings>(inputJson);
         appSettingsRoot.KeepOnTop = KeepOnTop;
         appSettingsRoot.Counterclockwise = Counterclockwise;
+        appSettingsRoot.RefreshRate = RefreshRate;
 
         appSettingsRoot.StartUp ??= new StartUp();
 
