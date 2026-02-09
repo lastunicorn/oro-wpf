@@ -6,6 +6,8 @@ Oro
 --------------------------------------------------------------------------------
 [new   ] Added support for counterclockwise rotation of the clock hands.
 [new   ] Added settings for clock's refresh rate.
+[change] Prevent settings to be saved on disk more frequently than 100 ms.
+[change] Upgrade to Clock WPF 1.3.2
 
 
 1.1.0

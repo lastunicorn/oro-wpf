@@ -24,7 +24,8 @@ public class TemplatesViewModel : ViewModelBase
             field = value;
             OnPropertyChanged();
 
-            PublishTemplate(field);
+            if (!IsInitializing)
+                PublishTemplate(field);
         }
     }
 
