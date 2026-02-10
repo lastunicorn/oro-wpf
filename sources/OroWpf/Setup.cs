@@ -1,4 +1,5 @@
-﻿using DustInTheWind.ClockWpf.Templates;
+﻿using System.Reflection;
+using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Infrastructure.Jobs;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Jobs;
@@ -45,10 +46,15 @@ internal static class Setup
 
     private static ApplicationState CreateApplicationState(ISettings settings)
     {
-        ApplicationState applicationState = new();
+        IEnumerable<Assembly> assemblies = LoatTemplateAssemblies();
 
-        List<Type> templateTypes = EnumerateClockTemplates().ToList();
-        applicationState.AvailableTemplateTypes = templateTypes;
+        List<Type> templateTypes = EnumerateClockTemplates(assemblies)
+            .ToList();
+
+        ApplicationState applicationState = new()
+        {
+            AvailableTemplateTypes = templateTypes
+        };
 
         if (templateTypes?.Count > 0)
         {
@@ -58,6 +64,14 @@ internal static class Setup
         }
 
         return applicationState;
+    }
+
+    private static IEnumerable<Assembly> LoatTemplateAssemblies()
+    {
+        yield return typeof(DefaultTemplate).Assembly;
+
+        foreach (Assembly assembly in PluginSupport.LoatTemplateAssemblies())
+            yield return assembly;
     }
 
     private static Type LoadTemplateTypeFromSettings(ISettings settings, List<Type> templateTypes)
@@ -76,9 +90,10 @@ internal static class Setup
         return templateTypes.FirstOrDefault(x => x == typeof(DefaultTemplate)) ?? templateTypes.First();
     }
 
-    private static IEnumerable<Type> EnumerateClockTemplates()
+    private static IEnumerable<Type> EnumerateClockTemplates(IEnumerable<Assembly> assemblies)
     {
-        return typeof(ClockTemplate).Assembly.GetTypes()
+        return assemblies
+            .SelectMany(x => x.GetTypes())
             .Where(x => x.IsClass && !x.IsAbstract && x.IsSubclassOf(typeof(ClockTemplate)));
     }
 
