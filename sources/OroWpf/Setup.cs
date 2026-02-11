@@ -9,6 +9,8 @@ using DustInTheWind.OroWpf.Presentation.Controls;
 using DustInTheWind.OroWpf.Presentation.Controls.About;
 using DustInTheWind.OroWpf.Presentation.Controls.Settings;
 using DustInTheWind.OroWpf.Presentation.Controls.Templates;
+using DustInTheWind.OroWpf.Presentation.MainArea;
+using DustInTheWind.OroWpf.Presentation.SettingsArea;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;

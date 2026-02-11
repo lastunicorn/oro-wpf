@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/Themes/CornerButtonStyles.xaml" />
-        <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/Themes/CornerThumbStyles.xaml" />
+        <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/CornerButtonStyles.xaml" />
+        <ResourceDictionary Source="/DustInTheWind.OroWpf.Presentation.CustomControls;component/CornerThumbStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

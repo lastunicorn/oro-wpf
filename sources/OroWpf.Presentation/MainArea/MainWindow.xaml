@@ -1,12 +1,12 @@
 ﻿<Window
-    x:Class="DustInTheWind.OroWpf.Presentation.MainWindow"
+    x:Class="DustInTheWind.OroWpf.Presentation.MainArea.MainWindow"
     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:clockWpf="clr-namespace:DustInTheWind.ClockWpf;assembly=DustInTheWind.ClockWpf"
-    xmlns:local="clr-namespace:DustInTheWind.OroWpf.Presentation"
+    xmlns:mainArea="clr-namespace:DustInTheWind.OroWpf.Presentation.MainArea"
     xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
     xmlns:presentation="clr-namespace:DustInTheWind.OroWpf.Presentation"
@@ -18,7 +18,7 @@
     AllowsTransparency="True"
     Background="Transparent"
     ResizeMode="CanResize"
-    d:DataContext="{d:DesignInstance local:MainViewModel}"
+    d:DataContext="{d:DesignInstance mainArea:MainViewModel}"
     Topmost="{Binding KeepOnTop}"
     behaviors:WindowLocationBehavior.Settings="{Binding Settings}"
     behaviors:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}">

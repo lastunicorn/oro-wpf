@@ -1,6 +1,6 @@
 ﻿using DustInTheWind.OroWpf.Infrastructure.PageModel;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 /// <summary>
 /// Interaction logic for SettingsPage.xaml

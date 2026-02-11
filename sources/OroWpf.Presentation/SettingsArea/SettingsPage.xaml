@@ -1,20 +1,19 @@
 ﻿<pageModel:RoundPage
-    x:Class="DustInTheWind.OroWpf.Presentation.Controls.SettingsPage"
+    x:Class="DustInTheWind.OroWpf.Presentation.SettingsArea.SettingsPage"
     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
     xmlns:templates="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Templates"
     xmlns:about="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.About"
-    xmlns:settings="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Settings"
+    xmlns:settingsArea="clr-namespace:DustInTheWind.OroWpf.Presentation.SettingsArea"
     xmlns:pageModel="clr-namespace:DustInTheWind.OroWpf.Infrastructure.PageModel;assembly=DustInTheWind.OroWpf.Infrastructure.PageModel"
     
     mc:Ignorable="d"
     d:DesignHeight="400"
     d:DesignWidth="400"
-    d:DataContext="{d:DesignInstance controls:SettingsPageModel}"
+    d:DataContext="{d:DesignInstance settingsArea:SettingsPageModel}"
     CloseCommand="{Binding SettingsCloseCommand}"
     Title="{Binding Title, Mode=OneWay}"
     Subtitle="{Binding Subtitle, Mode=OneWay}">
@@ -64,7 +63,7 @@
             <TabItem
                 Header="Settings">
 
-                <settings:SettingsControl
+                <settingsArea:SettingsControl
                     DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
 
             </TabItem>

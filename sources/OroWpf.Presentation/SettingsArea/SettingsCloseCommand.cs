@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 public class SettingsCloseCommand : ICommand
 {

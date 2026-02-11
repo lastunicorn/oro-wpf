@@ -2,7 +2,7 @@
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
-namespace DustInTheWind.OroWpf.Presentation;
+namespace DustInTheWind.OroWpf.Presentation.MainArea;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

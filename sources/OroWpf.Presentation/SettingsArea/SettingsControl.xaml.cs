@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls.Settings;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 /// <summary>
 /// Interaction logic for SettingsControl.xaml
 /// </summary>

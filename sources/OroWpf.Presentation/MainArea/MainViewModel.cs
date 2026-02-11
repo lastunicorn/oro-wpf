@@ -2,8 +2,9 @@
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation.Controls;
+using DustInTheWind.OroWpf.Presentation.SettingsArea;
 
-namespace DustInTheWind.OroWpf.Presentation;
+namespace DustInTheWind.OroWpf.Presentation.MainArea;
 
 public class MainViewModel : ViewModelBase
 {

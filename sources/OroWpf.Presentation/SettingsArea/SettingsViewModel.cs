@@ -1,7 +1,8 @@
 ﻿using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
+using DustInTheWind.OroWpf.Presentation.Controls;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls.Settings;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 public class SettingsViewModel : ViewModelBase
 {

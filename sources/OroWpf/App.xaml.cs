@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using DustInTheWind.OroWpf.Infrastructure.Jobs;
 using DustInTheWind.OroWpf.Presentation;
+using DustInTheWind.OroWpf.Presentation.MainArea;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroWpf;

@@ -4,7 +4,7 @@ using DustInTheWind.OroWpf.Presentation.Controls.About;
 using DustInTheWind.OroWpf.Presentation.Controls.Settings;
 using DustInTheWind.OroWpf.Presentation.Controls.Templates;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 public class SettingsPageModel : PageViewModel
 {

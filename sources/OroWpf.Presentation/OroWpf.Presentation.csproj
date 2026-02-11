@@ -28,10 +28,10 @@
 		<Compile Update="Controls\DemoPage.xaml.cs">
 			<SubType>Code</SubType>
 		</Compile>
-		<Compile Update="Controls\SettingsPage.xaml.cs">
+		<Compile Update="SettingsArea\SettingsPage.xaml.cs">
 			<SubType>Code</SubType>
 		</Compile>
-		<Compile Update="Controls\Settings\SettingsControl.xaml.cs">
+		<Compile Update="SettingsArea\SettingsControl.xaml.cs">
 			<SubType>Code</SubType>
 		</Compile>
 		<Compile Update="Controls\Templates\TemplatesControl.xaml.cs">
