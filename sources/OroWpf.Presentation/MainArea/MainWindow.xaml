@@ -7,10 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:clockWpf="clr-namespace:DustInTheWind.ClockWpf;assembly=DustInTheWind.ClockWpf"
     xmlns:mainArea="clr-namespace:DustInTheWind.OroWpf.Presentation.MainArea"
-    xmlns:controls="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls"
     xmlns:customControls="clr-namespace:DustInTheWind.OroWpf.Presentation.CustomControls;assembly=DustInTheWind.OroWpf.Presentation.CustomControls"
     xmlns:presentation="clr-namespace:DustInTheWind.OroWpf.Presentation"
-    xmlns:behaviors="clr-namespace:DustInTheWind.OroWpf.Presentation.Behaviors"
     
     mc:Ignorable="d"
     SizeToContent="WidthAndHeight"
@@ -20,8 +18,8 @@
     ResizeMode="CanResize"
     d:DataContext="{d:DesignInstance mainArea:MainViewModel}"
     Topmost="{Binding KeepOnTop}"
-    behaviors:WindowLocationBehavior.Settings="{Binding Settings}"
-    behaviors:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}">
+    mainArea:WindowLocationBehavior.Settings="{Binding Settings}"
+    mainArea:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}">
 
     <Window.Resources>
         <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>
@@ -94,16 +92,6 @@
             IsTabStop="False">
 
         </ContentControl>
-
-        <!--<customControls:RoundPage
-            x:Name="SettingsPage">
-
-            <controls:SettingsPage
-                DataContext="{Binding SettingsPageModel}"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch" />
-            
-        </customControls:RoundPage>-->
 
     </Grid>
 

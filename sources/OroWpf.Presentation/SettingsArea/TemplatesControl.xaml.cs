@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
-using DustInTheWind.ClockWpf.Movements;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls.Templates;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 /// <summary>
 /// Interaction logic for SettingsControl.xaml

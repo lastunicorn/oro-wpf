@@ -1,7 +1,7 @@
 using System.Windows;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 
-namespace DustInTheWind.OroWpf.Presentation.Behaviors;
+namespace DustInTheWind.OroWpf.Presentation.MainArea;
 
 public static class WindowLocationBehavior
 {

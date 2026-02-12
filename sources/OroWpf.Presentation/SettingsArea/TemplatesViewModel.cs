@@ -4,7 +4,7 @@ using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 
-namespace DustInTheWind.OroWpf.Presentation.Controls.Templates;
+namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 public class TemplatesViewModel : ViewModelBase
 {

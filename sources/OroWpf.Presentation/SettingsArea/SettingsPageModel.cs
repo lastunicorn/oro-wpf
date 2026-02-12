@@ -1,8 +1,5 @@
 ﻿using System.Reflection;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
-using DustInTheWind.OroWpf.Presentation.Controls.About;
-using DustInTheWind.OroWpf.Presentation.Controls.Settings;
-using DustInTheWind.OroWpf.Presentation.Controls.Templates;
 
 namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 

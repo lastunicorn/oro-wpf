@@ -1,6 +1,5 @@
 ﻿using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
-using DustInTheWind.OroWpf.Presentation.Controls;
 
 namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 

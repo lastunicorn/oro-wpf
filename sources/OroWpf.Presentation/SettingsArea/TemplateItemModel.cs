@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.OroWpf.Presentation.Controls.Templates;
+﻿namespace DustInTheWind.OroWpf.Presentation.SettingsArea;
 
 public class TemplateItemModel
 {

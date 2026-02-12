@@ -4,14 +4,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:settings="clr-namespace:DustInTheWind.OroWpf.Presentation.Controls.Settings"
+    xmlns:settingsArea="clr-namespace:DustInTheWind.OroWpf.Presentation.SettingsArea"
     xmlns:dataConvertors="clr-namespace:DustInTheWind.OroWpf.Presentation.DataConvertors"
     xmlns:shapes="clr-namespace:DustInTheWind.ClockWpf.Shapes;assembly=DustInTheWind.ClockWpf"
     
     mc:Ignorable="d"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    d:DataContext="{d:DesignInstance settings:SettingsViewModel}">
+    d:DataContext="{d:DesignInstance settingsArea:SettingsViewModel}">
 
     <UserControl.Resources>
         <dataConvertors:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
@@ -25,70 +25,46 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>-->
-
         <StackPanel
             Grid.Row="0"
             Orientation="Vertical">
 
-            <TextBlock
-                Text="General"
-                FontSize="14"
-                FontWeight="DemiBold"/>
+            <Border
+                Padding="10 2"
+                Background="#e0e0e0">
+
+                <TextBlock
+                    Text="General"
+                    FontSize="14"
+                    FontWeight="DemiBold" />
+            </Border>
 
             <CheckBox
                 IsChecked="{Binding KeepOnTop}"
                 Content="Keep on top"
-                Margin="15 8 0 0"/>
+                Margin="0 8 0 0"/>
 
         </StackPanel>
-
-        <!--<GroupBox
-            Grid.Row="1"
-            Margin="0 8 0 0">
-
-            <GroupBox.Header>
-
-                <TextBlock
-                    Text="Clock Direction"
-                    FontWeight="DemiBold" />
-
-            </GroupBox.Header>
-
-            <StackPanel 
-                Orientation="Vertical"
-                Margin="8">
-
-                <RadioButton 
-                    Content="Clockwise"
-                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Clockwise}}"
-                    Margin="0 0 0 8"
-                    VerticalAlignment="Center"/>
-
-                <RadioButton 
-                    Content="Counterclockwise"
-                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Counterclockwise}}"
-                    VerticalAlignment="Center"/>
-            </StackPanel>
-
-        </GroupBox>-->
 
         <StackPanel
             Grid.Row="1"
             Orientation="Vertical"
             Margin="0 10 0 0">
 
-            <TextBlock
-                Text="Clock Direction"
-                FontSize="14"
-                FontWeight="DemiBold" />
+            <Border
+                Padding="10 2"
+                Background="#e0e0e0">
+
+                <TextBlock
+                    Text="Clock Direction"
+                    FontSize="14"
+                    FontWeight="DemiBold" />
+
+            </Border>
 
             <StackPanel 
                 Orientation="Vertical"
-                Margin="15 8 0 0">
+                Margin="0 8 0 0">
 
                 <RadioButton 
                     Content="Clockwise"
@@ -109,14 +85,20 @@
             Orientation="Vertical"
             Margin="0 10 0 0">
 
-            <TextBlock
-                Text="Refresh Rate (times per second)"
-                FontSize="14"
-                FontWeight="DemiBold"/>
+            <Border
+                Padding="10 2"
+                Background="#e0e0e0">
+
+                <TextBlock
+                    Text="Refresh Rate (times per second)"
+                    FontSize="14"
+                    FontWeight="DemiBold"/>
+
+            </Border>
 
             <TextBox
                 Text="{Binding RefreshRate, UpdateSourceTrigger=PropertyChanged}"
-                Margin="15 8 0 0"
+                Margin="0 8 0 0"
                 VerticalAlignment="Center"/>
 
         </StackPanel>

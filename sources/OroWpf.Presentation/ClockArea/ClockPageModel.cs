@@ -3,6 +3,7 @@ using DustInTheWind.ClockWpf.Shapes;
 using DustInTheWind.ClockWpf.Templates;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
+using DustInTheWind.OroWpf.Presentation.MainArea;
 
 namespace DustInTheWind.OroWpf.Presentation.Controls;
 
