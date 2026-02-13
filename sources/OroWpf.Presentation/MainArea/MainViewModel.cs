@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using DustInTheWind.OroWpf.Infrastructure.PageModel;
 using DustInTheWind.OroWpf.Ports.SettingsAccess;
 using DustInTheWind.OroWpf.Presentation.Controls;
@@ -72,12 +73,15 @@ public class MainViewModel : ViewModelBase
 
     public SettingsCommand SettingsCommand { get; }
 
+    public AppCloseCommand AppCloseCommand { get; }
+
     public MainViewModel(PageEngine pageEngine, ISettings settings, IPageFactory pageFactory)
     {
         this.pageEngine = pageEngine ?? throw new ArgumentNullException(nameof(pageEngine));
         this.settings = settings ?? throw new ArgumentNullException(nameof(settings));
         this.pageFactory = pageFactory ?? throw new ArgumentNullException(nameof(pageFactory));
         SettingsCommand = new SettingsCommand(pageEngine);
+        AppCloseCommand = new AppCloseCommand();
 
         pageEngine.CurrentPageChanged += HandlePageChanged;
         pageEngine.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;

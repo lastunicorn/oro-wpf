@@ -61,7 +61,7 @@
             VerticalAlignment="Top"
             Cursor="Hand"
             Visibility="{Binding IsNavigationVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-            Click="CloseButton_Click"
+            Command="{Binding AppCloseCommand}"
             Corner="TopRight"
             CornerRadius="0.05"
             HoverBackground="Red">

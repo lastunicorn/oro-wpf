@@ -13,11 +13,6 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void CloseButton_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
-
     private void ResizeGrip_DragDelta(object sender, DragDeltaEventArgs e)
     {
         double minSize = 100;
