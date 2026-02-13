@@ -19,7 +19,8 @@
     d:DataContext="{d:DesignInstance mainArea:MainViewModel}"
     Topmost="{Binding KeepOnTop}"
     mainArea:WindowLocationBehavior.Settings="{Binding Settings}"
-    mainArea:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}">
+    mainArea:WindowLocationBehavior.ContainerElement="{Binding ElementName=MainContainer}"
+    mainArea:WindowDragBehavior.EnableDrag="True">
 
     <Window.Resources>
         <presentation:QuarterSizeConverter x:Key="QuarterSizeConverter"/>

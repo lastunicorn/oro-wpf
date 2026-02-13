@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace DustInTheWind.OroWpf.Presentation.MainArea;
 
@@ -12,12 +11,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-    }
-
-    protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-    {
-        base.OnMouseLeftButtonDown(e);
-        DragMove();
     }
 
     private void CloseButton_Click(object sender, RoutedEventArgs e)
